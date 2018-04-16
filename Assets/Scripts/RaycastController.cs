@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(Collider2D))]
 public class RaycastController : MonoBehaviour
 {
-
     public LayerMask collisionMask;
     private BoxCollider2D boxCollider;
+    private Bounds bounds;
 
     private const float distBetweenRays = 0.25f;
     [HideInInspector] public float skinWidth = .015f;
@@ -25,19 +25,47 @@ public class RaycastController : MonoBehaviour
 
     private void Start()
     {
+        bounds = boxCollider.bounds;
         CalculateRaySpacing();
     }
 
     private void Update()
     {
+        UpdateBounds();
+        CalculateRaySpacing();
         UpdateRaycastOrigins();
+    }
+
+    private void UpdateBounds()
+    {
+        if (transform.childCount == 0)
+        {
+            bounds = boxCollider.bounds;
+        }
+        else
+        {
+            Bounds newBounds = new Bounds();
+
+            newBounds = boxCollider.bounds;
+
+            Collider2D[] colliders = GetComponentsInChildren<Collider2D>();
+
+            if (colliders.Length > 0)
+            {
+                foreach (Collider2D coll in colliders)
+                {
+                    newBounds.Encapsulate(coll.bounds);
+                }
+            }
+
+            bounds = newBounds;
+        }
+
+        bounds.Expand(skinWidth * -2);
     }
 
     public void UpdateRaycastOrigins()
     {
-        Bounds bounds = boxCollider.bounds;
-        bounds.Expand(skinWidth * -2); //multiplied by -2 to shrink bounds, rather than expand
-
         raycastOrigins.bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
         raycastOrigins.bottomRight = new Vector2(bounds.max.x, bounds.min.y);
         raycastOrigins.topLeft = new Vector2(bounds.min.x, bounds.max.y);
@@ -46,9 +74,6 @@ public class RaycastController : MonoBehaviour
 
     private void CalculateRaySpacing()
     {
-        Bounds bounds = boxCollider.bounds;
-        bounds.Expand(skinWidth * -2);
-
         float boundsWidth = bounds.size.x;
         float boundsHeight = bounds.size.y;
 

@@ -5,9 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(RaycastController))]
 public class CollisionChecker : MonoBehaviour
 {
-
+    public CollisionInfo collisions;
     private RaycastController raycastController;
-
     private float skinWidth;
 
     private void Start()
@@ -16,13 +15,14 @@ public class CollisionChecker : MonoBehaviour
         skinWidth = raycastController.skinWidth;
     }
 
-    public void CheckCollisionsAndMove(Vector2 moveAmount)
+    public void CheckCollisionsAndMove(Vector3 moveAmount)
     {
+        collisions.Reset();
         moveAmount = CheckForCollisions(moveAmount);
-        transform.Translate(moveAmount);
+        Move(moveAmount);
     }
 
-    private Vector2 CheckForCollisions(Vector2 moveAmount)
+    private Vector2 CheckForCollisions(Vector3 moveAmount)
     {
         HorizontalCollisions(ref moveAmount);
         VerticalCollisions(ref moveAmount);
@@ -30,7 +30,12 @@ public class CollisionChecker : MonoBehaviour
         return moveAmount;
     }
 
-    private void HorizontalCollisions(ref Vector2 moveAmount)
+    public void Move(Vector3 moveAmount)
+    {
+        transform.Translate(moveAmount);
+    }
+
+    private void HorizontalCollisions(ref Vector3 moveAmount)
     {
         float directionX = Mathf.Sign(moveAmount.x);
         float rayLength = Mathf.Abs(moveAmount.x) + skinWidth;
@@ -50,11 +55,14 @@ public class CollisionChecker : MonoBehaviour
             {
                 moveAmount.x = (hit.distance - skinWidth) * directionX;
                 rayLength = hit.distance;
+
+                collisions.left = directionX == -1;
+                collisions.right = directionX == 1;
             }
         }
     }
 
-    private void VerticalCollisions(ref Vector2 moveAmount)
+    private void VerticalCollisions(ref Vector3 moveAmount)
     {
         float directionY = Mathf.Sign(moveAmount.y);
         float rayLength = Mathf.Abs(moveAmount.y) + skinWidth;
@@ -69,7 +77,22 @@ public class CollisionChecker : MonoBehaviour
             {
                 moveAmount.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
+
+                collisions.below = directionY == -1;
+                collisions.above = directionY == 1;
             }
+        }
+    }
+
+    public struct CollisionInfo
+    {
+        public bool above, below;
+        public bool left, right;
+
+        public void Reset()
+        {
+            above = below = false;
+            left = right = false;
         }
     }
 }
