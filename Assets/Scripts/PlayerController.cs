@@ -13,10 +13,12 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity;
 
     public bool pushingObject;
+    public bool canMove;
 
     private void Start()
     {
         collisionChecker = GetComponent<CollisionChecker>();
+        canMove = true;
     }
 
     void Update ()
@@ -39,9 +41,16 @@ public class PlayerController : MonoBehaviour
 
     private void SetVelocity()
     {
-        velocity.x = directionalInput.x * moveSpeed;
-        velocity.y = directionalInput.y * moveSpeed;
-        velocity.z = 0f;
+        if (canMove)
+        {
+            velocity.x = directionalInput.x * moveSpeed;
+            velocity.y = directionalInput.y * moveSpeed;
+            velocity.z = 0f;
+        }
+        else
+        {
+            velocity = Vector3.zero;
+        }
     }
 
     private void MovePlayer()
@@ -49,6 +58,32 @@ public class PlayerController : MonoBehaviour
         collisionChecker.CheckCollisionsAndMove(velocity * Time.deltaTime);
     }
 
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Pushable")
+        {
+            PuzzleBlock block = other.GetComponent<PuzzleBlock>();
+
+            if (collisionChecker.collisions.above)
+            {
+                block.MoveUp();
+            }
+            else if(collisionChecker.collisions.below)
+            {
+                block.MoveDown();
+            }
+            else if(collisionChecker.collisions.left)
+            {
+                block.MoveLeft();
+            }
+            else
+            {
+                block.MoveRight();
+            }
+        }
+    }
+
+    /*
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "Pushable")
@@ -70,4 +105,5 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+    */
 }

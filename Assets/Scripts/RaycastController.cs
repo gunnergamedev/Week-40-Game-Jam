@@ -9,7 +9,7 @@ public class RaycastController : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Bounds bounds;
 
-    private const float distBetweenRays = 0.25f;
+    private const float distBetweenRays = 0.10f;
     [HideInInspector] public float skinWidth = .015f;
     [HideInInspector] public int horizontalRayCount;
     [HideInInspector] public int verticalRayCount;

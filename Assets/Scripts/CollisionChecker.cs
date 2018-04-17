@@ -50,14 +50,18 @@ public class CollisionChecker : MonoBehaviour
             Vector2 rayOrigin = (directionX == -1) ? raycastController.raycastOrigins.bottomLeft : raycastController.raycastOrigins.bottomRight;
             rayOrigin += Vector2.up * (raycastController.horizontalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, raycastController.collisionMask);
+            Debug.DrawRay(rayOrigin, Vector2.right * directionX, Color.red);
 
             if (hit)
             {
                 moveAmount.x = (hit.distance - skinWidth) * directionX;
                 rayLength = hit.distance;
 
-                collisions.left = directionX == -1;
-                collisions.right = directionX == 1;
+                if (hit.transform.tag == "Pushable")
+                {
+                    collisions.left = directionX == -1;
+                    collisions.right = directionX == 1;
+                }
             }
         }
     }
@@ -72,14 +76,18 @@ public class CollisionChecker : MonoBehaviour
             Vector2 rayOrigin = (directionY == -1) ? raycastController.raycastOrigins.bottomLeft : raycastController.raycastOrigins.topLeft;
             rayOrigin += Vector2.right * (raycastController.verticalRaySpacing * i + moveAmount.x);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, raycastController.collisionMask);
+            Debug.DrawRay(rayOrigin, Vector2.right * directionY, Color.red);
 
             if (hit)
             {
                 moveAmount.y = (hit.distance - skinWidth) * directionY;
                 rayLength = hit.distance;
 
-                collisions.below = directionY == -1;
-                collisions.above = directionY == 1;
+                if (hit.transform.tag == "Pushable")
+                {
+                    collisions.below = directionY == -1;
+                    collisions.above = directionY == 1;
+                }
             }
         }
     }

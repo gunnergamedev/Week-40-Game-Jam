@@ -24,8 +24,9 @@ GameObject:
   - component: {fileID: 61122454834089902}
   - component: {fileID: 114158961342766014}
   - component: {fileID: 114570639961779404}
+  - component: {fileID: 114243004912300364}
   m_Layer: 8
-  m_Name: PushableBlock
+  m_Name: PuzzleBlock
   m_TagString: Pushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,6 +109,18 @@ MonoBehaviour:
   verticalRayCount: 0
   horizontalRaySpacing: 0
   verticalRaySpacing: 0
+--- !u!114 &114243004912300364
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1602648439451984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d3def2ab5f089242aa5d0d5839c718b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blockNumber: 0
 --- !u!114 &114570639961779404
 MonoBehaviour:
   m_ObjectHideFlags: 1
