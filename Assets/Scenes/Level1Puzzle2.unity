@@ -1741,7 +1741,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4158695841544550, guid: d7542d3c050ba074eadbd41a455d9939, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7542d3c050ba074eadbd41a455d9939, type: 2}
@@ -1890,34 +1890,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameIsPaused: 0
   pauseMenu: {fileID: 272957030}
---- !u!1 &483972670
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 483972671}
-  m_Layer: 0
-  m_Name: 830 TEST tell me if u see this
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &483972671
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 483972670}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.8943405, y: 2.9018645, z: -10.421055}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &515415844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4891,7 +4863,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1861457274
 GameObject:
