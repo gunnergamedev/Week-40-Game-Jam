@@ -153,13 +153,32 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "PuzzleButtonOne")
         {
             PuzzleButtonOne button = other.GetComponentInParent<PuzzleButtonOne>();
-            button.PlayPuzzleSounds();
+
+            if (!button.isPuzzleSolved)
+            {
+                button.PlayPuzzleSounds();
+            }
         }
 
         if (other.tag == "PuzzleButtonTwo")
         {
             PuzzleButtonTwo button = other.GetComponentInParent<PuzzleButtonTwo>();
-            button.PlayPuzzleSounds();
+
+            if (!button.isPuzzleSolved)
+            {
+                button.PlayPuzzleSounds();
+            }
+        }
+
+        if (other.tag == "PuzzleButtonThree")
+        {
+            PuzzleButtonThree button = other.GetComponent<PuzzleButtonThree>();
+
+            if (!button.isPuzzleSolved)
+            {
+                button.PlayPuzzleSounds();
+                canMove = false;
+            }
         }
 
         if (other.tag == "EnterZone")

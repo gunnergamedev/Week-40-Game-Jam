@@ -96,4 +96,9 @@ public class PuzzleTwoManager : MonoBehaviour
             shell.DeactivateShell();
         }
     }
+
+    public void PuzzleAlreadySolved()
+    {
+
+    }
 }

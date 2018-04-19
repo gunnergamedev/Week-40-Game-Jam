@@ -197,4 +197,9 @@ public class PuzzleOneManager : MonoBehaviour
             }
         }
     }
+
+    public void PuzzleAlreadySolved()
+    {
+
+    }
 }
