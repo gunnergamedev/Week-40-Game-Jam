@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 535437697}
   - component: {fileID: 535437696}
   m_Layer: 0
-  m_Name: Grass
+  m_Name: SandGrass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,7 +778,7 @@ Tilemap:
     e33: 1
   m_TileRefreshArray:
   - serializedVersion: 1
-    m_DirtyIndex: 0
+    m_DirtyIndex: 1
 --- !u!1001 &631592375
 Prefab:
   m_ObjectHideFlags: 0
@@ -841,7 +841,7 @@ GameObject:
   - component: {fileID: 638481203}
   - component: {fileID: 638481202}
   m_Layer: 0
-  m_Name: Rocks
+  m_Name: SandRocks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1132,7 +1132,7 @@ Tilemap:
     e33: 1
   m_TileRefreshArray:
   - serializedVersion: 1
-    m_DirtyIndex: 0
+    m_DirtyIndex: 1
 --- !u!1 &766145206
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,7 +2163,7 @@ Tilemap:
     e33: 1
   m_TileRefreshArray:
   - serializedVersion: 1
-    m_DirtyIndex: 0
+    m_DirtyIndex: 1
 --- !u!1001 &854013091
 Prefab:
   m_ObjectHideFlags: 0
