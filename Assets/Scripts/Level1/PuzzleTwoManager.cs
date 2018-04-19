@@ -5,6 +5,7 @@ using UnityEngine;
 public class PuzzleTwoManager : MonoBehaviour
 {
     private MusicManager musicManager;
+    private PuzzleButtonTwo puzzleButton;
 
     private AudioSource audioSource;
     [SerializeField] private AudioClip successSound;
@@ -19,6 +20,7 @@ public class PuzzleTwoManager : MonoBehaviour
     {
         musicManager = FindObjectOfType<MusicManager>();
         audioSource = GetComponent<AudioSource>();
+        puzzleButton = FindObjectOfType<PuzzleButtonTwo>();
         allShellsCorrect = true;
     }
 
@@ -64,6 +66,7 @@ public class PuzzleTwoManager : MonoBehaviour
             shell.PuzzleSolved();
         }
 
+        puzzleButton.isPuzzleSolved = true;
         StartCoroutine(PuzzleTwoSolvedCo());
     }
 

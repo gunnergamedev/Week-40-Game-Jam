@@ -7,6 +7,6 @@ public class Initialization : MonoBehaviour
 {
     private void Start()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 }
