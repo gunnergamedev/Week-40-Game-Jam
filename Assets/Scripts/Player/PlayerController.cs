@@ -7,6 +7,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private CollisionChecker collisionChecker;
+    private GameManager gameManager;
     
     [SerializeField] private float moveSpeed = 4f;
     public Vector3 directionalInput;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         collisionChecker = GetComponent<CollisionChecker>();
+        gameManager = FindObjectOfType<GameManager>();
         canMove = true;
     }
 
@@ -163,11 +165,16 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "EnterZone")
         {
             MountainEntry mountain = other.GetComponent<MountainEntry>();
+
+            int mountainNumber = mountain.mountainNumber;
+            gameManager.currentMountainNumber = mountainNumber;
+
             mountain.EnterMountain();
         }
 
         if (other.tag == "ExitZone")
         {
+            gameManager.playerExitingMountain = true;
             MountainExit mountain = other.GetComponent<MountainExit>();
             mountain.ExitMountain();
         }
