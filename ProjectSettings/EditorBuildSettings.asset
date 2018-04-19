@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ff8a55e30acc09d4eac4136a6390dc50
   - enabled: 1
+    path: Assets/Scenes/Sandbox.unity
+    guid: 9bd9c9e6b39018745ab9922f717255ab
+  - enabled: 1
     path: Assets/Scenes/Level1Puzzle2.unity
     guid: f73b10c89239466478a8018e85442353
   - enabled: 1

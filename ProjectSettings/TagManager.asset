@@ -12,6 +12,8 @@ TagManager:
   - PuzzleButtonOne
   - PuzzleShellTwo
   - PuzzleShellTwoInteractZone
+  - EnterZone
+  - ExitZone
   layers:
   - Default
   - TransparentFX

@@ -159,6 +159,18 @@ public class PlayerController : MonoBehaviour
             PuzzleButtonTwo button = other.GetComponentInParent<PuzzleButtonTwo>();
             button.PlayPuzzleSounds();
         }
+
+        if (other.tag == "EnterZone")
+        {
+            MountainEntry mountain = other.GetComponent<MountainEntry>();
+            mountain.EnterMountain();
+        }
+
+        if (other.tag == "ExitZone")
+        {
+            MountainExit mountain = other.GetComponent<MountainExit>();
+            mountain.ExitMountain();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)

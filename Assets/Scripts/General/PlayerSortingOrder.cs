@@ -7,6 +7,7 @@ public class PlayerSortingOrder : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private int defaultSortingOrder;
     private int hiddenSortingOrder = -2;
+    private int revealSortingOrder = 4;
 
     private void Start()
     {
@@ -19,8 +20,13 @@ public class PlayerSortingOrder : MonoBehaviour
         spriteRenderer.sortingOrder = hiddenSortingOrder;
     }
 
-    public void ShowPlayer()
+    public void ResetPlayerSortingOrder()
     {
         spriteRenderer.sortingOrder = defaultSortingOrder;
+    }
+
+    public void RevealPlayer()
+    {
+        spriteRenderer.sortingOrder = revealSortingOrder;
     }
 }
