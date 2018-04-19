@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PuzzleShellTwo : MonoBehaviour
+public class PuzzleButtonOne : MonoBehaviour
 {
     private AudioSource audioSource;
     [SerializeField] private AudioClip[] puzzleSounds;
@@ -10,6 +10,7 @@ public class PuzzleShellTwo : MonoBehaviour
     [SerializeField] private float[] delay;
 
     public bool isPlayingSounds;
+    public bool isPuzzleSolved;
 
     private void Start()
     {
@@ -18,7 +19,7 @@ public class PuzzleShellTwo : MonoBehaviour
 
     public void PlayPuzzleSounds()
     {
-        if (!isPlayingSounds)
+        if (!isPlayingSounds && !isPuzzleSolved)
         {
             StartCoroutine(PuzzleSoundOneCo());
             isPlayingSounds = true;

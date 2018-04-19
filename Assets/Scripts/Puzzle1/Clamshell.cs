@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Clamshell : MonoBehaviour
 {
-    private PuzzleTwoManager puzzleManager;
+    private PuzzleOneManager puzzleManager;
     private SpriteRenderer spriteRenderer;
 
     [SerializeField] private int puzzleNumber;
@@ -15,7 +15,7 @@ public class Clamshell : MonoBehaviour
 
     private void Start()
     {
-        puzzleManager = FindObjectOfType<PuzzleTwoManager>();
+        puzzleManager = FindObjectOfType<PuzzleOneManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         spriteRenderer.sprite = noPearlSprite;

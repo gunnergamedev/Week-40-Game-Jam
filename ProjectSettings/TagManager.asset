@@ -6,10 +6,12 @@ TagManager:
   tags:
   - Gridpoint
   - PuzzleSound
-  - PuzzleShellTwo
-  - PuzzleShellOne
   - Clamshell
   - Pearl
+  - PuzzleButtonTwo
+  - PuzzleButtonOne
+  - PuzzleShellTwo
+  - PuzzleShellTwoInteractZone
   layers:
   - Default
   - TransparentFX

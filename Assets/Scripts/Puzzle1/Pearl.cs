@@ -13,7 +13,7 @@ public class Pearl : MonoBehaviour
     public int currentGridPos;
     private int targetGridPos;
 
-    private PuzzleTwoManager puzzleTwoManager;
+    private PuzzleOneManager puzzleOneManager;
     [SerializeField] private GameObject interactZone;
 
     [SerializeField] private float moveSpeed = 3f;
@@ -26,7 +26,7 @@ public class Pearl : MonoBehaviour
 
     private void Start()
     {
-        puzzleTwoManager = FindObjectOfType<PuzzleTwoManager>();
+        puzzleOneManager = FindObjectOfType<PuzzleOneManager>();
         currentGridPos = startingGridPos;
         targetGridPos = currentGridPos;
         player = FindObjectOfType<PlayerController>();
@@ -112,7 +112,7 @@ public class Pearl : MonoBehaviour
 
     private void CheckIfOccupied()
     {
-        bool isOccupied = puzzleTwoManager.CheckGridpoint(targetGridPos);
+        bool isOccupied = puzzleOneManager.CheckGridpoint(targetGridPos);
 
         if (!isOccupied && !isMoving)
         {
@@ -129,7 +129,7 @@ public class Pearl : MonoBehaviour
     {
         if (isMoving && canMove)
         {
-            Vector3 targetPosition = puzzleTwoManager.GetGridpointPosition(targetGridPos);
+            Vector3 targetPosition = puzzleOneManager.GetGridpointPosition(targetGridPos);
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
             player.canMove = false;
             PlayPuzzleSoundWhenPushed();

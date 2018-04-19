@@ -11,88 +11,35 @@ public class PuzzleTwoManager : MonoBehaviour
     [SerializeField] private AudioClip failureSound;
     [SerializeField] private float puzzleSolvedMusicDelay;
 
-    [SerializeField] private GameObject[] grid;
-    [SerializeField] private Vector3[] gridpointPosition;
-    [SerializeField] private GameObject gridpointPrefab;
-
-    private PlayerController player;
-
-    private Clamshell[] clamshells;
-
-    public int pearlCount = 0;
-
     private bool playedSuccessSound;
-
-    [SerializeField] private GameObject pearlToCreate;
-    [SerializeField] private GameObject[] pearlObjects;
+    private bool allShellsCorrect;
+    private int shellCount;
 
     private void Start()
     {
         musicManager = FindObjectOfType<MusicManager>();
         audioSource = GetComponent<AudioSource>();
-        clamshells = FindObjectsOfType<Clamshell>();
-        CreateGridpoints();
-        player = FindObjectOfType<PlayerController>();
-
-        CreatePearls();
+        allShellsCorrect = true;
     }
 
-    private void CreateGridpoints()
+    public void CheckCurrentShell(int shellNumber)
     {
-        for (int i=0; i < grid.Length; i++)
+        if (shellNumber != shellCount)
         {
-            grid[i] = Instantiate(gridpointPrefab, gridpointPosition[i], Quaternion.identity);
+            allShellsCorrect = false;
+        }
+
+        shellCount++;
+
+        if (shellCount == 5)
+        {
+            CheckIfAllShellsCorrect();
         }
     }
 
-    public bool CheckGridpoint(int gridpointNumber)
+    public void CheckIfAllShellsCorrect()
     {
-        bool isOccupied;
-
-        Gridpoint gridpoint = grid[gridpointNumber].GetComponent<Gridpoint>();
-
-        if (gridpoint.isOccupied)
-        {
-            isOccupied = true;
-        }
-        else
-        {
-            isOccupied = false;
-        }
-
-        return isOccupied;
-    }
-
-    public Vector3 GetGridpointPosition(int gridpointNumber)
-    {
-        return gridpointPosition[gridpointNumber];
-    }
-
-    private void Update()
-    {
-        CheckClamshellsForPearls();
-    }
-
-    private void CheckClamshellsForPearls()
-    {
-        if (pearlCount == 5)
-        {
-            CheckIfAllPearlsAreCorrect();
-        }
-    }
-
-    private void CheckIfAllPearlsAreCorrect()
-    {
-        int correctPearls = 0;
-
-        foreach (Clamshell shell in clamshells)
-        {
-            if (shell.correctPearl)
-            {
-                correctPearls++;
-            }
-        }
-        if (correctPearls == 5)
+        if (allShellsCorrect)
         {
             PuzzleSolved();
         }
@@ -110,6 +57,13 @@ public class PuzzleTwoManager : MonoBehaviour
             playedSuccessSound = true;
         }
 
+        ShellPuzzleTwo[] shells = FindObjectsOfType<ShellPuzzleTwo>();
+
+        foreach (ShellPuzzleTwo shell in shells)
+        {
+            shell.PuzzleSolved();
+        }
+
         StartCoroutine(PuzzleTwoSolvedCo());
     }
 
@@ -121,7 +75,7 @@ public class PuzzleTwoManager : MonoBehaviour
 
     private void PuzzleTwoSolved()
     {
-        musicManager.isPuzzleTwoSolved = true;
+        musicManager.isLevelOneSolved = true;
         musicManager.CheckWhichMusicToPlay();
         this.gameObject.SetActive(false);
     }
@@ -129,67 +83,14 @@ public class PuzzleTwoManager : MonoBehaviour
     private void PuzzleFailed()
     {
         audioSource.PlayOneShot(failureSound);
-        pearlCount = 0;
+        shellCount = 0;
+        allShellsCorrect = true;
 
-        DestroyPearls();
+        ShellPuzzleTwo[] shells = FindObjectsOfType<ShellPuzzleTwo>();
 
-        foreach (Clamshell shell in clamshells)
+        foreach (ShellPuzzleTwo shell in shells)
         {
-            shell.ResetShell();
-        }
-
-        StartCoroutine(CreatePearlsCo());
-    }
-
-    private void DestroyPearls()
-    {
-        foreach (GameObject pearl in pearlObjects)
-        {
-            Destroy(pearl);
-        }
-    }
-
-    private IEnumerator CreatePearlsCo()
-    {
-        yield return new WaitForSeconds(1.0f);
-        player.EnablePlayerMovement();
-        CreatePearls();
-    }
-
-    private void CreatePearls()
-    {
-        int pearlCount = 5;
-
-        for (int i = 0; i < pearlCount; i++)
-        {
-            pearlObjects[i] = Instantiate(pearlToCreate, gridpointPosition[i], Quaternion.identity);
-
-            Pearl pearl = pearlObjects[i].GetComponent<Pearl>();
-
-            pearl.startingGridPos = i;
-            
-            switch(i)
-            {
-                case 0:
-                    pearl.pearlNumber = 1;
-                    break;
-
-                case 1:
-                    pearl.pearlNumber = 4;
-                    break;
-
-                case 2:
-                    pearl.pearlNumber = 0;
-                    break;
-
-                case 3:
-                    pearl.pearlNumber = 3;
-                    break;
-
-                default:
-                    pearl.pearlNumber = 2;
-                    break;
-            }
+            shell.DeactivateShell();
         }
     }
 }

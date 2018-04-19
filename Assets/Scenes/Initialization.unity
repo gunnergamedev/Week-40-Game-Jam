@@ -508,10 +508,10 @@ MonoBehaviour:
   audioTwo: {fileID: 1224375479}
   audioThree: {fileID: 1224375478}
   audioFull: {fileID: 1224375477}
-  isPuzzleOneSolved: 0
-  isPuzzleTwoSolved: 0
-  isPuzzleThreeSolved: 0
-  areAllPuzzlesSolved: 0
+  isLevelOneSolved: 0
+  isLevelTwoSolved: 0
+  isLevelThreeSolved: 0
+  areAllLevelsSolved: 0
 --- !u!4 &1224375482
 Transform:
   m_ObjectHideFlags: 0
@@ -618,7 +618,7 @@ GameObject:
   - component: {fileID: 1854633340}
   - component: {fileID: 1854633339}
   m_Layer: 0
-  m_Name: Quad
+  m_Name: DarkBackdrop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

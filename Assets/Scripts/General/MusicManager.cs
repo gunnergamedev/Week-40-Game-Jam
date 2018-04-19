@@ -9,10 +9,10 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource audioThree;
     [SerializeField] private AudioSource audioFull;
 
-    public bool isPuzzleOneSolved;
-    public bool isPuzzleTwoSolved;
-    public bool isPuzzleThreeSolved;
-    public bool areAllPuzzlesSolved;
+    public bool isLevelOneSolved;
+    public bool isLevelTwoSolved;
+    public bool isLevelThreeSolved;
+    public bool areAllLevelsSolved;
 
     private void Awake()
     {
@@ -23,26 +23,26 @@ public class MusicManager : MonoBehaviour
     {
         StopAllMusic();
 
-        if (isPuzzleOneSolved && isPuzzleTwoSolved && isPuzzleThreeSolved)
+        if (isLevelOneSolved && isLevelTwoSolved && isLevelThreeSolved)
         {
-            areAllPuzzlesSolved = true;
-            isPuzzleOneSolved = false;
-            isPuzzleTwoSolved = false;
-            isPuzzleThreeSolved = false;
+            areAllLevelsSolved = true;
+            isLevelOneSolved = false;
+            isLevelTwoSolved = false;
+            isLevelThreeSolved = false;
         }
-        if (areAllPuzzlesSolved)
+        if (areAllLevelsSolved)
         {
             PlayFullSong();
         }
-        if (isPuzzleOneSolved)
+        if (isLevelOneSolved)
         {
             PlayMusicOne();
         }
-        if(isPuzzleTwoSolved)
+        if(isLevelTwoSolved)
         {
             PlayMusicTwo();
         }
-        if(isPuzzleThreeSolved)
+        if(isLevelThreeSolved)
         {
             PlayMusicThree();
         }

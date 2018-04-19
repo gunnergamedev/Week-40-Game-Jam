@@ -135,6 +135,30 @@ public class PlayerController : MonoBehaviour
                 pearl.MoveRight();
             }
         }
+
+        if (other.tag == "PuzzleShellTwo")
+        {
+            ShellPuzzleTwo shell = other.GetComponent<ShellPuzzleTwo>();
+            shell.ActivateShell();
+        }
+
+        if (other.tag == "PuzzleShellTwoInteractZone")
+        {
+            ShellPuzzleTwo shell = other.GetComponentInParent<ShellPuzzleTwo>();
+            shell.PlayShellSound();
+        }
+
+        if (other.tag == "PuzzleButtonOne")
+        {
+            PuzzleButtonOne button = other.GetComponentInParent<PuzzleButtonOne>();
+            button.PlayPuzzleSounds();
+        }
+
+        if (other.tag == "PuzzleButtonTwo")
+        {
+            PuzzleButtonTwo button = other.GetComponentInParent<PuzzleButtonTwo>();
+            button.PlayPuzzleSounds();
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -149,15 +173,6 @@ public class PlayerController : MonoBehaviour
                 {
                     pearl.PlayPuzzleSound();
                 }
-            }
-        }
-
-        if (other.tag == "PuzzleShellTwo")
-        {
-            if (Input.GetButtonDown("Activate"))
-            {
-                PuzzleShellTwo shell = other.GetComponentInParent<PuzzleShellTwo>();
-                shell.PlayPuzzleSounds();
             }
         }
     }
