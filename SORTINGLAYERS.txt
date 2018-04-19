@@ -1,0 +1,17 @@
+REG OBJECTS
+3 if in front of player
+1 if behind player
+
+PLAYER
+2 - when shown
+(-2 when hidden behind mountain)
+
+FLAT OBJECTS
+0 flat objects
+
+BACKGROUND
+-1 Mountain interior (perimeter)
+-2 player when hidden
+-3 Black tiles covering floor
+-4 cave floor rocks
+-5 cave floor
