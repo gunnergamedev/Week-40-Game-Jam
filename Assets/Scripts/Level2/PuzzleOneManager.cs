@@ -127,7 +127,7 @@ public class PuzzleOneManager : MonoBehaviour
     {
         musicManager.isLevelTwoSolved = true;
         musicManager.CheckWhichMusicToPlay();
-        puzzleButton.isPuzzleSolved = true;
+        puzzleButton.isPuzzleSolved = true;        
         this.gameObject.SetActive(false);
     }
 

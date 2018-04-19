@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     private CollisionChecker collisionChecker;
     private GameManager gameManager;
+    private Animator animator;
     
     [SerializeField] private float moveSpeed = 4f;
     public Vector3 directionalInput;
@@ -20,18 +21,54 @@ public class PlayerController : MonoBehaviour
     public bool pushingObject;
     public bool canMove;
 
+    private float defaultXScale;
+
     private void Start()
     {
         collisionChecker = GetComponent<CollisionChecker>();
         gameManager = FindObjectOfType<GameManager>();
+        animator = GetComponent<Animator>();
         canMove = true;
+        defaultXScale = transform.localScale.x;
     }
 
     void Update ()
     {
         GetInput();
         Move();
-	}
+        ControlAnimation();
+    }
+
+    private void ControlAnimation()
+    {
+        bool movingHorz = false;
+        bool movingVert = false;
+        bool movingUp = false;
+
+        if(directionalInput.x != 0f)
+        {
+            movingHorz = true;
+            Vector3 localScale = transform.localScale;
+            localScale.x = defaultXScale * -1 * Mathf.Sign(directionalInput.x);
+            transform.localScale = localScale;
+        }
+        if(directionalInput.y != 0f)
+        {
+            movingVert = true;
+        }
+        if (directionalInput.y > 0f)
+        {
+            movingUp = true;
+        }
+        else
+        {
+            movingUp = false;
+        }
+
+        animator.SetBool("MovingHorz", movingHorz);
+        animator.SetBool("MovingVert", movingVert);
+        animator.SetBool("MovingUpwards", movingUp);
+    }
 
     private void GetInput()
     {

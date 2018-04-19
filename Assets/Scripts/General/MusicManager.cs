@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
@@ -8,18 +9,20 @@ public class MusicManager : MonoBehaviour
     [SerializeField] private AudioSource audioTwo;
     [SerializeField] private AudioSource audioThree;
     [SerializeField] private AudioSource audioFull;
+    [SerializeField] private AudioSource audioMenu;
 
     public bool isLevelOneSolved;
     public bool isLevelTwoSolved;
     public bool isLevelThreeSolved;
     public bool areAllLevelsSolved;
+    public bool playMainMenuMusic;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
     }
 
-    public void CheckWhichMusicToPlay()
+public void CheckWhichMusicToPlay()
     {
         StopAllMusic();
 
@@ -29,22 +32,27 @@ public class MusicManager : MonoBehaviour
             isLevelOneSolved = false;
             isLevelTwoSolved = false;
             isLevelThreeSolved = false;
-        }
-        if (areAllLevelsSolved)
-        {
             PlayFullSong();
+            SceneManager.LoadScene("WinScreen");
         }
-        if (isLevelOneSolved)
+        else
         {
-            PlayMusicOne();
-        }
-        if(isLevelTwoSolved)
-        {
-            PlayMusicTwo();
-        }
-        if(isLevelThreeSolved)
-        {
-            PlayMusicThree();
+            if (isLevelOneSolved)
+            {
+                PlayMusicOne();
+            }
+            if (isLevelTwoSolved)
+            {
+                PlayMusicTwo();
+            }
+            if (isLevelThreeSolved)
+            {
+                PlayMusicThree();
+            }
+            if (playMainMenuMusic)
+            {
+                PlayMainMenuMusic();
+            }
         }
     }
 
@@ -74,5 +82,16 @@ public class MusicManager : MonoBehaviour
         audioTwo.Stop();
         audioThree.Stop();
         audioFull.Stop();
+        audioMenu.Stop();
+    }
+
+    public void StopMainMenuMusic()
+    {
+        audioMenu.Stop();
+    }
+
+    private void PlayMainMenuMusic()
+    {
+        audioMenu.Play();
     }
 }

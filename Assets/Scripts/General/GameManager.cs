@@ -18,10 +18,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
-    }
-
-    private void Start()
-    {
         musicManager = FindObjectOfType<MusicManager>();
     }
 
@@ -37,6 +33,12 @@ public class GameManager : MonoBehaviour
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name != "MainMenu")
+        {
+            musicManager.playMainMenuMusic = false;
+            musicManager.StopMainMenuMusic();
+        }
+
         if (scene.name == "Sandbox" && playerExitingMountain)
         {
             foreach (Vector3 position in mountainExitPositions)
@@ -97,6 +99,7 @@ public class GameManager : MonoBehaviour
                 musicManager.isLevelOneSolved = false;
                 musicManager.isLevelTwoSolved = false;
                 musicManager.isLevelThreeSolved = false;
+                musicManager.playMainMenuMusic = true;
                 musicManager.CheckWhichMusicToPlay();
                 break;
         }

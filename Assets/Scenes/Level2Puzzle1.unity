@@ -3869,7 +3869,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1706334600}
   m_Lens:
-    FieldOfView: 50
+    FieldOfView: 70
     OrthographicSize: 10
     NearClipPlane: 0.1
     FarClipPlane: 5000
@@ -4016,7 +4016,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 944ac025eecafa04ba1978cb9676a7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeOut: {fileID: 0}
 --- !u!61 &1524908580
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4859,7 +4858,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 50
+  field of view: 70
   orthographic: 0
   orthographic size: 10
   m_Depth: -1

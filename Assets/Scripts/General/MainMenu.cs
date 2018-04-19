@@ -5,6 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    private MusicManager musicManager;
+
+    private void Awake()
+    {
+        musicManager = FindObjectOfType<MusicManager>();
+    }
+
+    public void StopMusicWhenRestartingGame()
+    {
+        musicManager.CheckWhichMusicToPlay();
+    }
+
     private void Update()
     {
         bool start = Input.GetKeyDown(KeyCode.KeypadEnter);
