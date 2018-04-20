@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PuzzleButtonThree : MonoBehaviour
 {
+    private Animator animator;
     private AudioSource audioSource;
     [SerializeField] private AudioClip[] puzzleSounds;
 
@@ -12,11 +13,13 @@ public class PuzzleButtonThree : MonoBehaviour
 
     public bool isPlayingSounds;
     public bool isPuzzleSolved;
+    public bool wasButtonActivated;
 
     private Piece[] pieces;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         pieces = FindObjectsOfType<Piece>();
     }
@@ -25,6 +28,8 @@ public class PuzzleButtonThree : MonoBehaviour
     {
         if (!isPlayingSounds && !isPuzzleSolved)
         {
+            wasButtonActivated = true;
+            animator.SetBool("wasButtonActivated", wasButtonActivated);
             StartCoroutine(PuzzleSoundOneCo());
             isPlayingSounds = true;
         }

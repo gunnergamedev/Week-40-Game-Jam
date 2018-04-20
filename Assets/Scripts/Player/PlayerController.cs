@@ -41,33 +41,42 @@ public class PlayerController : MonoBehaviour
 
     private void ControlAnimation()
     {
-        bool movingHorz = false;
-        bool movingVert = false;
-        bool movingUp = false;
+        if (canMove)
+        {
+            animator.enabled = true;
 
-        if(directionalInput.x != 0f)
-        {
-            movingHorz = true;
-            Vector3 localScale = transform.localScale;
-            localScale.x = defaultXScale * -1 * Mathf.Sign(directionalInput.x);
-            transform.localScale = localScale;
-        }
-        if(directionalInput.y != 0f)
-        {
-            movingVert = true;
-        }
-        if (directionalInput.y > 0f)
-        {
-            movingUp = true;
+            bool movingHorz = false;
+            bool movingVert = false;
+            bool movingUp = false;
+
+            if (directionalInput.x != 0f)
+            {
+                movingHorz = true;
+                Vector3 localScale = transform.localScale;
+                localScale.x = defaultXScale * -1 * Mathf.Sign(directionalInput.x);
+                transform.localScale = localScale;
+            }
+            if (directionalInput.y != 0f)
+            {
+                movingVert = true;
+            }
+            if (directionalInput.y > 0f)
+            {
+                movingUp = true;
+            }
+            else
+            {
+                movingUp = false;
+            }
+
+            animator.SetBool("MovingHorz", movingHorz);
+            animator.SetBool("MovingVert", movingVert);
+            animator.SetBool("MovingUpwards", movingUp);
         }
         else
         {
-            movingUp = false;
+            animator.enabled = false;
         }
-
-        animator.SetBool("MovingHorz", movingHorz);
-        animator.SetBool("MovingVert", movingVert);
-        animator.SetBool("MovingUpwards", movingUp);
     }
 
     private void GetInput()
@@ -175,6 +184,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (other.tag == "PearlInteractZone")
+        {
+            Pearl pearl = other.GetComponentInParent<Pearl>();
+            if (!pearl.hasBeenPushed)
+            {
+                pearl.PlayPuzzleSound();
+            }
+        }
+
         if (other.tag == "PuzzleShellTwo")
         {
             ShellPuzzleTwo shell = other.GetComponent<ShellPuzzleTwo>();
@@ -236,7 +254,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D other)
+    /*private void OnTriggerStay2D(Collider2D other)
     {
         if (other.tag == "PuzzleSound")
         {
@@ -250,5 +268,5 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 }

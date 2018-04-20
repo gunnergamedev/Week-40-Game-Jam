@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pearl : MonoBehaviour
 {
+    private Animator animator;
     private SpriteRenderer spriteRenderer;
     private AudioSource audioSource;
     [SerializeField] private AudioClip[] puzzleSounds;
@@ -23,9 +24,11 @@ public class Pearl : MonoBehaviour
     private bool isMoving;
     private bool canMove = true;
     private bool isPuzzleSoundPlaying;
+    public bool hasBeenPushed;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         puzzleOneManager = FindObjectOfType<PuzzleOneManager>();
         currentGridPos = startingGridPos;
         targetGridPos = currentGridPos;
@@ -117,6 +120,12 @@ public class Pearl : MonoBehaviour
         if (!isOccupied && !isMoving)
         {
             isMoving = true;
+            animator.SetBool("isMoving", isMoving);
+
+            if (!hasBeenPushed)
+            {
+                hasBeenPushed = true;
+            }
         }
         else
         {
@@ -143,6 +152,7 @@ public class Pearl : MonoBehaviour
             {
                 currentGridPos = targetGridPos;
                 isMoving = false;
+                animator.SetBool("isMoving", isMoving);
                 player.EnablePlayerMovement();
                 audioSource.Stop();
                 isPuzzleSoundPlaying = false;

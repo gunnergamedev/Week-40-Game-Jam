@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Gridpoint
-  - PuzzleSound
   - Clamshell
   - Pearl
   - PuzzleButtonTwo
@@ -16,6 +15,7 @@ TagManager:
   - ExitZone
   - Piece
   - PuzzleButtonThree
+  - PearlInteractZone
   layers:
   - Default
   - TransparentFX

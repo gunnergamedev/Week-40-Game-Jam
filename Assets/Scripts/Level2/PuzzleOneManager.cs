@@ -72,17 +72,15 @@ public class PuzzleOneManager : MonoBehaviour
         return gridpointPosition[gridpointNumber];
     }
 
-    private void Update()
+    public void CheckClamshellsForPearls()
     {
-        CheckClamshellsForPearls();
+        StartCoroutine(CheckAllPearlsCo());
     }
 
-    private void CheckClamshellsForPearls()
+    private IEnumerator CheckAllPearlsCo()
     {
-        if (pearlCount == 5)
-        {
-            CheckIfAllPearlsAreCorrect();
-        }
+        yield return new WaitForSeconds(0.5f);
+        CheckIfAllPearlsAreCorrect();
     }
 
     private void CheckIfAllPearlsAreCorrect()

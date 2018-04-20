@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Clamshell : MonoBehaviour
 {
+    private Animator animator;
     private PuzzleOneManager puzzleManager;
     private SpriteRenderer spriteRenderer;
 
@@ -15,6 +16,7 @@ public class Clamshell : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         puzzleManager = FindObjectOfType<PuzzleOneManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -43,13 +45,20 @@ public class Clamshell : MonoBehaviour
     public void PearlInShell()
     {
         spriteRenderer.sprite = pearlShellSprite;
+        animator.SetBool("hasPearl", true);
 
         puzzleManager.pearlCount++;
+
+        if (puzzleManager.pearlCount == 5)
+        {
+            puzzleManager.CheckClamshellsForPearls();
+        }
     }
 
     public void ResetShell()
     {
         spriteRenderer.sprite = noPearlSprite;
+        animator.SetBool("hasPearl", false);
 
         correctPearl = false;
     }
