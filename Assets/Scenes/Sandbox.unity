@@ -3278,6 +3278,11 @@ Prefab:
       propertyPath: m_Points.Array.data[50].y
       value: -1.4315834
       objectReference: {fileID: 0}
+    - target: {fileID: 114922055214012906, guid: 2977d81711ac9774a8a419e8c6a82daa,
+        type: 2}
+      propertyPath: mountainNumber
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2977d81711ac9774a8a419e8c6a82daa, type: 2}
   m_IsPrefabParent: 0
