@@ -187,10 +187,17 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "PearlInteractZone")
         {
             Pearl pearl = other.GetComponentInParent<Pearl>();
+
             if (!pearl.hasBeenPushed)
             {
                 pearl.PlayPuzzleSound();
             }
+        }
+
+        if (other.tag == "InteractZone")
+        {
+            InteractZone zone = other.GetComponent<InteractZone>();
+            zone.ActivatedButtonSprite();
         }
 
         if (other.tag == "PuzzleShellTwo")
@@ -203,6 +210,7 @@ public class PlayerController : MonoBehaviour
         {
             ShellPuzzleTwo shell = other.GetComponentInParent<ShellPuzzleTwo>();
             shell.PlayShellSound();
+            shell.ActivatedButtonSprite();
         }
 
         if (other.tag == "PuzzleButtonOne")
@@ -251,6 +259,25 @@ public class PlayerController : MonoBehaviour
             gameManager.playerExitingMountain = true;
             MountainExit mountain = other.GetComponent<MountainExit>();
             mountain.ExitMountain();
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.tag == "PuzzleShellTwoInteractZone")
+        {
+            ShellPuzzleTwo shell = other.GetComponentInParent<ShellPuzzleTwo>();
+            shell.InactiveButtonSprite();
+        }
+
+        if (other.tag == "InteractZone")
+        {
+            InteractZone zone = other.GetComponent<InteractZone>();
+
+            if (!zone.buttonisActivated)
+            {
+                zone.InactiveButtonSprite();
+            }
         }
     }
 

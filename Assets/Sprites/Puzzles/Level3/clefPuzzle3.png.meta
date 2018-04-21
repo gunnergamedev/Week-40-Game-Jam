@@ -1,25 +1,25 @@
 fileFormatVersion: 2
-guid: 0c28cc78ddefd30448ed782331a653fe
-timeCreated: 1524157640
+guid: a11e256c856147e4994cccedfd2aa870
+timeCreated: 1524282568
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: clef_0
-    21300002: clef_1
-    21300004: clef_2
-    21300006: clef_3
-    21300008: clef_4
-    21300010: clef_5
-    21300012: clef_6
-    21300014: clef_7
-    21300016: clef_8
-    21300018: clef_9
-    21300020: clef_10
-    21300022: clef_11
-    21300024: clef_12
-    21300026: clef_13
-    21300028: clef_14
-    21300030: clef_15
+    21300000: clefPuzzle3_0
+    21300002: clefPuzzle3_1
+    21300004: clefPuzzle3_2
+    21300006: clefPuzzle3_3
+    21300008: clefPuzzle3_4
+    21300010: clefPuzzle3_5
+    21300012: clefPuzzle3_6
+    21300014: clefPuzzle3_7
+    21300016: clefPuzzle3_8
+    21300018: clefPuzzle3_9
+    21300020: clefPuzzle3_10
+    21300022: clefPuzzle3_11
+    21300024: clefPuzzle3_12
+    21300026: clefPuzzle3_13
+    21300028: clefPuzzle3_14
+    21300030: clefPuzzle3_15
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -73,7 +73,7 @@ TextureImporter:
   textureFormatSet: 0
   platformSettings:
   - buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -83,7 +83,7 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
   - buildTarget: Standalone
-    maxTextureSize: 2048
+    maxTextureSize: 512
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -96,13 +96,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: clef_0
+      name: clefPuzzle3_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 529.5
-        width: 128
-        height: 176.5
+        y: 555
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -110,13 +110,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_1
+      name: clefPuzzle3_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 529.5
-        width: 128
-        height: 176.5
+        x: 185
+        y: 555
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,13 +124,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_2
+      name: clefPuzzle3_2
       rect:
         serializedVersion: 2
-        x: 256
-        y: 529.5
-        width: 128
-        height: 176.5
+        x: 370
+        y: 555
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -138,13 +138,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_3
+      name: clefPuzzle3_3
       rect:
         serializedVersion: 2
-        x: 384
-        y: 529.5
-        width: 128
-        height: 176.5
+        x: 555
+        y: 555
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,69 +152,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 353.5
-        width: 128
-        height: 176.5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: clef_5
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 353.5
-        width: 128
-        height: 176.5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: clef_6
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 353.5
-        width: 128
-        height: 176.5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: clef_7
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 353.5
-        width: 128
-        height: 176.5
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: clef_8
+      name: clefPuzzle3_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 177.5
-        width: 128
-        height: 176.5
+        y: 370
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,13 +166,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_9
+      name: clefPuzzle3_5
       rect:
         serializedVersion: 2
-        x: 128
-        y: 177.5
-        width: 128
-        height: 176.5
+        x: 185
+        y: 370
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,13 +180,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_10
+      name: clefPuzzle3_6
       rect:
         serializedVersion: 2
-        x: 256
-        y: 177.5
-        width: 128
-        height: 176.5
+        x: 370
+        y: 370
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,13 +194,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_11
+      name: clefPuzzle3_7
       rect:
         serializedVersion: 2
-        x: 384
-        y: 177.5
-        width: 128
-        height: 176.5
+        x: 555
+        y: 370
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -264,13 +208,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_12
+      name: clefPuzzle3_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 1.5
-        width: 128
-        height: 176.5
+        y: 185
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,13 +222,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_13
+      name: clefPuzzle3_9
       rect:
         serializedVersion: 2
-        x: 128
-        y: 1.5
-        width: 128
-        height: 176.5
+        x: 185
+        y: 185
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,13 +236,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_14
+      name: clefPuzzle3_10
       rect:
         serializedVersion: 2
-        x: 256
-        y: 1.5
-        width: 128
-        height: 176.5
+        x: 370
+        y: 185
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -306,13 +250,69 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: clef_15
+      name: clefPuzzle3_11
       rect:
         serializedVersion: 2
-        x: 384
-        y: 1.5
-        width: 128
-        height: 176.5
+        x: 555
+        y: 185
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clefPuzzle3_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clefPuzzle3_13
+      rect:
+        serializedVersion: 2
+        x: 185
+        y: 0
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clefPuzzle3_14
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 0
+        width: 185
+        height: 185
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: clefPuzzle3_15
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 0
+        width: 185
+        height: 185
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

@@ -93,13 +93,6 @@ public class MusicManager : MonoBehaviour
         StartCoroutine(FadeOut(audioThree, fadeTime));
         StartCoroutine(FadeOut(audioFull, fadeTime));
         StartCoroutine(FadeOut(audioMenu, fadeTime));
-
-        /*
-        audioOne.Stop();
-        audioTwo.Stop();
-        audioThree.Stop();
-        audioFull.Stop();
-        audioMenu.Stop(); */
     }
 
     public void StopMainMenuMusic()

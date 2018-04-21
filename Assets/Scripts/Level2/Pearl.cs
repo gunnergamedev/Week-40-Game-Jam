@@ -26,6 +26,10 @@ public class Pearl : MonoBehaviour
     private bool isPuzzleSoundPlaying;
     public bool hasBeenPushed;
 
+    [SerializeField] private GameObject buttonToCreate;
+    private GameObject button;
+    private InteractZone buttonZone;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -36,11 +40,19 @@ public class Pearl : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+
+        CreateButton();
     }
 
     private void Update()
     {
         Move();
+    }
+
+    private void CreateButton()
+    {
+        button = Instantiate(buttonToCreate, new Vector3(transform.position.x, transform.position.y - 1.57f, 0f), Quaternion.identity);
+        buttonZone = button.GetComponent<InteractZone>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -125,6 +137,7 @@ public class Pearl : MonoBehaviour
             if (!hasBeenPushed)
             {
                 hasBeenPushed = true;
+                buttonZone.buttonisActivated = true;
             }
         }
         else

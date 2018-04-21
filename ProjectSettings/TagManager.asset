@@ -16,6 +16,7 @@ TagManager:
   - Piece
   - PuzzleButtonThree
   - PearlInteractZone
+  - InteractZone
   layers:
   - Default
   - TransparentFX

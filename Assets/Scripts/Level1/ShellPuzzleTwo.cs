@@ -15,6 +15,12 @@ public class ShellPuzzleTwo : MonoBehaviour
     [SerializeField] private Sprite activatedShell;
     [SerializeField] private Sprite deactivatedShell;
 
+    [SerializeField] private Sprite buttonActive;
+    [SerializeField] private Sprite buttonInactive;
+    [SerializeField] private GameObject button;
+
+    SpriteRenderer buttonRenderer;
+
     private bool wasActivated;
 
     private void Awake()
@@ -22,17 +28,23 @@ public class ShellPuzzleTwo : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         puzzleManager = FindObjectOfType<PuzzleTwoManager>();
+        buttonRenderer = button.GetComponent<SpriteRenderer>();
+    }
+
+    public void ActivatedButtonSprite()
+    {
+        buttonRenderer.sprite = buttonActive;
+    }
+
+    public void InactiveButtonSprite()
+    {
+        buttonRenderer.sprite = buttonInactive;
     }
 
     public void ActivateShell()
     {
         if (!wasActivated)
         {
-            if (!audioSource.isPlaying)
-            {
-                audioSource.PlayOneShot(puzzleSounds[shellNumber]);
-            }
-
             wasActivated = true;
             spriteRenderer.sprite = activatedShell;
             puzzleManager.CheckCurrentShell(shellNumber);

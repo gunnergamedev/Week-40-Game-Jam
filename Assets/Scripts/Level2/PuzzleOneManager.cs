@@ -121,6 +121,14 @@ public class PuzzleOneManager : MonoBehaviour
         {
             shell.PuzzleAlreadySolved();
         }
+
+        InteractZone[] zones = FindObjectsOfType<InteractZone>();
+
+        foreach (InteractZone zone in zones)
+        {
+            zone.ActivatedButtonSprite();
+            zone.buttonisActivated = true;
+        }
     }
 
     private void PuzzleSolved()
@@ -129,6 +137,15 @@ public class PuzzleOneManager : MonoBehaviour
         musicManager.StopAllMusic();
         puzzleButton.isPuzzleSolved = true;
         puzzleButton.PlayPuzzleSoundsSolved();
+
+        InteractZone[] zones = FindObjectsOfType<InteractZone>();
+
+        foreach (InteractZone zone in zones)
+        {
+            zone.ActivatedButtonSprite();
+            zone.buttonisActivated = true;
+        }
+
         StartCoroutine(PuzzleOneSolvedCo());
     }
 

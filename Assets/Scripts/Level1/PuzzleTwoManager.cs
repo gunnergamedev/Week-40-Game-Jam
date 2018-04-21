@@ -124,6 +124,7 @@ public class PuzzleTwoManager : MonoBehaviour
         foreach (ShellPuzzleTwo shell in shells)
         {
             shell.PuzzleSolved();
+            shell.ActivatedButtonSprite();
         }
 
         puzzleButton.isPuzzleSolved = true;
