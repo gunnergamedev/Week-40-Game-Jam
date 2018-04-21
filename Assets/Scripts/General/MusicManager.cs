@@ -19,11 +19,18 @@ public class MusicManager : MonoBehaviour
     public bool areAllLevelsSolved;
     public bool playMainMenuMusic;
 
+    [SerializeField] private float fullVolume;
+    [SerializeField] private float loweredVolume;
     [SerializeField] private float musicDelay;
 
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        audioOne.volume = fullVolume;
+        audioTwo.volume = fullVolume;
+        audioThree.volume = fullVolume;
+        audioFull.volume = fullVolume;
+        //don't put audioMenu, leave that at full volume
     }
 
     public void CheckWhichMusicToPlay()
@@ -42,7 +49,15 @@ public class MusicManager : MonoBehaviour
             isLevelOneSolved = false;
             isLevelTwoSolved = false;
             isLevelThreeSolved = false;
+
+            //reset ALL volumes when going to win screen (in case player restarts game again from main menu)
+            audioOne.volume = fullVolume;
+            audioTwo.volume = fullVolume;
+            audioThree.volume = fullVolume;
+            audioFull.volume = fullVolume;
+
             PlayFullSong();
+
             SceneManager.LoadScene("WinScreen");
         }
         else
@@ -88,11 +103,11 @@ public class MusicManager : MonoBehaviour
 
     public void StopAllMusic()
     {
-        StartCoroutine(FadeOut(audioOne,fadeTime));
-        StartCoroutine(FadeOut(audioTwo, fadeTime));
-        StartCoroutine(FadeOut(audioThree, fadeTime));
-        StartCoroutine(FadeOut(audioFull, fadeTime));
-        StartCoroutine(FadeOut(audioMenu, fadeTime));
+        StartCoroutine(FadeOutToZeroVolume(audioOne,fadeTime));
+        StartCoroutine(FadeOutToZeroVolume(audioTwo, fadeTime));
+        StartCoroutine(FadeOutToZeroVolume(audioThree, fadeTime));
+        StartCoroutine(FadeOutToZeroVolume(audioFull, fadeTime));
+        StartCoroutine(FadeOutToZeroVolume(audioMenu, fadeTime));
     }
 
     public void StopMainMenuMusic()
@@ -105,18 +120,54 @@ public class MusicManager : MonoBehaviour
         audioMenu.Play();
     }
 
-    public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    public void EnterMountainLowerVolume()
     {
-        float startVolume = audioSource.volume;
+        StartCoroutine(FadeOutToLowVolume(audioOne, fadeTime));
+        StartCoroutine(FadeOutToLowVolume(audioTwo, fadeTime));
+        StartCoroutine(FadeOutToLowVolume(audioThree, fadeTime));
+        StartCoroutine(FadeOutToLowVolume(audioFull, fadeTime));
+    }
+
+    public void ExitMountainIncreaseVolume()
+    {
+        StartCoroutine(IncreaseVolumeBackToFull(audioOne, fadeTime));
+        StartCoroutine(IncreaseVolumeBackToFull(audioTwo, fadeTime));
+        StartCoroutine(IncreaseVolumeBackToFull(audioThree, fadeTime));
+        StartCoroutine(IncreaseVolumeBackToFull(audioFull, fadeTime));
+    }
+
+    public IEnumerator FadeOutToZeroVolume(AudioSource audioSource, float FadeTime)
+    {
+        float previousVolume = audioSource.volume;
 
         while (audioSource.volume > 0)
         {
-            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+            audioSource.volume -= previousVolume * Time.deltaTime / FadeTime;
 
             yield return null;
         }
 
         audioSource.Stop();
-        audioSource.volume = startVolume;
+        audioSource.volume = previousVolume;
+    }
+
+    public IEnumerator FadeOutToLowVolume(AudioSource audioSource, float FadeTime)
+    {
+        while (audioSource.volume > loweredVolume)
+        {
+            audioSource.volume -= fullVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+    }
+
+    public IEnumerator IncreaseVolumeBackToFull(AudioSource audioSource, float FadeTime)
+    {
+        while (audioSource.volume < fullVolume)
+        {
+            audioSource.volume += fullVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
     }
 }
