@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
 {
     public bool gameIsPaused = false;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject dialogueBox;
 
     private void Update()
     {
@@ -63,5 +64,10 @@ public class PauseMenu : MonoBehaviour
     private void HidePauseMenu()
     {
         pauseMenu.SetActive(false);
+    }
+
+    public void ActivateDialogueBox()
+    {
+        dialogueBox.SetActive(true);
     }
 }

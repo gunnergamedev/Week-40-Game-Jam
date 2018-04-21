@@ -239,7 +239,7 @@ public class PlayerController : MonoBehaviour
 
             if (!button.isPuzzleSolved)
             {
-                button.PlayPuzzleSounds();
+                button.ActivateDialogueBox();
                 canMove = false;
             }
         }

@@ -24,6 +24,12 @@ public class PuzzleButtonThree : MonoBehaviour
         pieces = FindObjectsOfType<Piece>();
     }
 
+    public void ActivateDialogueBox()
+    {
+        PauseMenu uiManager = FindObjectOfType<PauseMenu>();
+        uiManager.ActivateDialogueBox();
+    }
+
     public void PlayPuzzleSounds()
     {
         if (!isPlayingSounds && !isPuzzleSolved)
