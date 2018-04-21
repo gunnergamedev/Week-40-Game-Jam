@@ -14,7 +14,7 @@ public class Piece : MonoBehaviour
     private void Start()
     {
         puzzleManager = FindObjectOfType<PuzzleThreeManager>();
-        isPuzzleSolved = true; //so can't rotate pieces before pushing button
+        isPuzzleSolved = true; //so can't rotate pieces before pushing button or if re-entering mountain after solving puzzle
     }
 
     public void ShufflePieces()

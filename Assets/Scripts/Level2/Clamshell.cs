@@ -13,8 +13,9 @@ public class Clamshell : MonoBehaviour
 
     [SerializeField] private Sprite pearlShellSprite;
     [SerializeField] private Sprite noPearlSprite;
+    [SerializeField] private Sprite closedShell;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         puzzleManager = FindObjectOfType<PuzzleOneManager>();
@@ -61,5 +62,11 @@ public class Clamshell : MonoBehaviour
         animator.SetBool("hasPearl", false);
 
         correctPearl = false;
+    }
+
+    public void PuzzleAlreadySolved()
+    {
+        animator.enabled = false;
+        spriteRenderer.sprite = closedShell;
     }
 }

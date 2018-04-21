@@ -23,22 +23,29 @@ public class PuzzleOneManager : MonoBehaviour
     public int pearlCount = 0;
 
     private bool playedSuccessSound;
+    public bool isPuzzleAlreadySolved;
 
     [SerializeField] private float delayAfterFailure;
 
     [SerializeField] private GameObject pearlToCreate;
     [SerializeField] private GameObject[] pearlObjects;
 
-    private void Start()
+    private void Awake()
     {
         musicManager = FindObjectOfType<MusicManager>();
         audioSource = GetComponent<AudioSource>();
         clamshells = FindObjectsOfType<Clamshell>();
-        CreateGridpoints();
         player = FindObjectOfType<PlayerController>();
         puzzleButton = FindObjectOfType<PuzzleButtonOne>();
+    }
 
-        CreatePearls();
+    private void Start()
+    {
+        if (!isPuzzleAlreadySolved)
+        {
+            CreateGridpoints();
+            CreatePearls();
+        }
     }
 
     private void CreateGridpoints()
@@ -198,6 +205,12 @@ public class PuzzleOneManager : MonoBehaviour
 
     public void PuzzleAlreadySolved()
     {
+        isPuzzleAlreadySolved = true;
+        puzzleButton.isPuzzleSolved = true;
 
+        foreach (Clamshell shell in clamshells)
+        {
+            shell.PuzzleAlreadySolved();
+        }
     }
 }

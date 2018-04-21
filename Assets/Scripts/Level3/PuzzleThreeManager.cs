@@ -19,12 +19,12 @@ public class PuzzleThreeManager : MonoBehaviour
     private void Awake()
     {
         pieces = FindObjectsOfType<Piece>();
+        puzzleButton = FindObjectOfType<PuzzleButtonThree>();
     }
 
     private void Start()
     {
         musicManager = FindObjectOfType<MusicManager>();
-        puzzleButton = FindObjectOfType<PuzzleButtonThree>();
         audioSource = GetComponent<AudioSource>();        
     }
 
@@ -83,5 +83,7 @@ public class PuzzleThreeManager : MonoBehaviour
         {
             piece.isPuzzleSolved = true;
         }
+
+        puzzleButton.isPuzzleSolved = true;
     }
 }

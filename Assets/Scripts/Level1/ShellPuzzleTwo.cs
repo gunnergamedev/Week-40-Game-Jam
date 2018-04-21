@@ -17,7 +17,7 @@ public class ShellPuzzleTwo : MonoBehaviour
 
     private bool wasActivated;
 
-    private void Start()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();

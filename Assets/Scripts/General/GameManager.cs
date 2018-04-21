@@ -63,22 +63,16 @@ public class GameManager : MonoBehaviour
             case "Level1Puzzle2":
                 if (musicManager.isLevelOneSolved || musicManager.areAllLevelsSolved)
                 {
-                    PuzzleOneManager puzzleOneManager = FindObjectOfType<PuzzleOneManager>();
-                    PuzzleButtonOne puzzleOneButton = FindObjectOfType<PuzzleButtonOne>();
-
-                    puzzleOneButton.isPuzzleSolved = true;
-                    puzzleOneManager.PuzzleAlreadySolved();
+                    PuzzleTwoManager puzzleTwoManager = FindObjectOfType<PuzzleTwoManager>();
+                    puzzleTwoManager.PuzzleAlreadySolved();
                 }
                 break;
 
             case "Level2Puzzle1":
                 if (musicManager.isLevelTwoSolved || musicManager.areAllLevelsSolved)
                 {
-                    PuzzleTwoManager puzzleTwoManager = FindObjectOfType<PuzzleTwoManager>();
-                    PuzzleButtonTwo puzzleTwoButton = FindObjectOfType<PuzzleButtonTwo>();
-
-                    puzzleTwoButton.isPuzzleSolved = true;
-                    puzzleTwoManager.PuzzleAlreadySolved();
+                    PuzzleOneManager puzzleOneManager = FindObjectOfType<PuzzleOneManager>();
+                    puzzleOneManager.PuzzleAlreadySolved();
                 }
                 break;
 
@@ -86,9 +80,6 @@ public class GameManager : MonoBehaviour
                 if (musicManager.isLevelThreeSolved || musicManager.areAllLevelsSolved)
                 {
                     PuzzleThreeManager puzzleThreeManager = FindObjectOfType<PuzzleThreeManager>();
-                    PuzzleButtonThree puzzleThreeButton = FindObjectOfType<PuzzleButtonThree>();
-
-                    puzzleThreeButton.isPuzzleSolved = true;
                     puzzleThreeManager.PuzzleAlreadySolved();
                 }
                 break;                

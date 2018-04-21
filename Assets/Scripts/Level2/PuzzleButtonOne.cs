@@ -14,7 +14,7 @@ public class PuzzleButtonOne : MonoBehaviour
     public bool isPuzzleSolved;
     public bool wasButtonActivated;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();

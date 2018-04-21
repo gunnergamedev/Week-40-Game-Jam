@@ -16,7 +16,7 @@ public class PuzzleTwoManager : MonoBehaviour
     private bool allShellsCorrect;
     private int shellCount;
 
-    private void Start()
+    private void Awake()
     {
         musicManager = FindObjectOfType<MusicManager>();
         audioSource = GetComponent<AudioSource>();
@@ -99,6 +99,13 @@ public class PuzzleTwoManager : MonoBehaviour
 
     public void PuzzleAlreadySolved()
     {
+        ShellPuzzleTwo[] shells = FindObjectsOfType<ShellPuzzleTwo>();
 
+        foreach (ShellPuzzleTwo shell in shells)
+        {
+            shell.PuzzleSolved();
+        }
+
+        puzzleButton.isPuzzleSolved = true;
     }
 }

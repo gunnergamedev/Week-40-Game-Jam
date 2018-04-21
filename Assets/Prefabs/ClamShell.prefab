@@ -91,6 +91,7 @@ MonoBehaviour:
   correctPearl: 0
   pearlShellSprite: {fileID: 21300000, guid: d35800462a41be546b592024be76701f, type: 3}
   noPearlSprite: {fileID: 21300000, guid: e85be071e677fa84e89aa3519efa2e3f, type: 3}
+  closedShell: {fileID: 21300004, guid: d404cd1510bf5404b9e061d9d34f4f3a, type: 3}
 --- !u!114 &114988635973325338
 MonoBehaviour:
   m_ObjectHideFlags: 1

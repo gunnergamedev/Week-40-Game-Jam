@@ -17,14 +17,22 @@ public class MusicManager : MonoBehaviour
     public bool areAllLevelsSolved;
     public bool playMainMenuMusic;
 
+    [SerializeField] private float musicDelay;
+
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
     }
 
-public void CheckWhichMusicToPlay()
+    public void CheckWhichMusicToPlay()
     {
         StopAllMusic();
+        StartCoroutine(CheckMusicCo());
+    }
+
+    private IEnumerator CheckMusicCo()
+    {
+        yield return new WaitForSeconds(musicDelay);
 
         if (isLevelOneSolved && isLevelTwoSolved && isLevelThreeSolved)
         {
