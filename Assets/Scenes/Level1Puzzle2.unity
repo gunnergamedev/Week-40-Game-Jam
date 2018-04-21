@@ -2895,7 +2895,7 @@ Prefab:
     - target: {fileID: 114123290704530400, guid: 8a10cdee8a43bf743b9308da16294db8,
         type: 2}
       propertyPath: shellNumber
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a10cdee8a43bf743b9308da16294db8, type: 2}
@@ -3858,7 +3858,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   successSound: {fileID: 8300000, guid: 63260a6fe90b413448aebe1eebc3dd89, type: 3}
   failureSound: {fileID: 8300000, guid: b61f0bcd892ff2645af390eadf09dff0, type: 3}
-  puzzleSolvedMusicDelay: 1.5
+  successSoundDelay: 3.75
+  musicDelay: 1.5
 --- !u!4 &1098710015
 Transform:
   m_ObjectHideFlags: 0
@@ -5116,12 +5117,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14707d070a9916c4baa1f8cdc6c22d71, type: 3}
   - {fileID: 8300000, guid: 48607e3a628c39d418a80aa1d632900b, type: 3}
   - {fileID: 8300000, guid: 2f37bc8ce63e3ba43890bcd0e387081b, type: 3}
-  delay:
-  - 0.75
-  - 0.75
-  - 0.75
-  - 0.75
-  - 0.75
+  delay: 0.6
   isPlayingSounds: 0
   isPuzzleSolved: 0
   wasButtonActivated: 0
@@ -5339,7 +5335,7 @@ Prefab:
     - target: {fileID: 114123290704530400, guid: 8a10cdee8a43bf743b9308da16294db8,
         type: 2}
       propertyPath: shellNumber
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a10cdee8a43bf743b9308da16294db8, type: 2}

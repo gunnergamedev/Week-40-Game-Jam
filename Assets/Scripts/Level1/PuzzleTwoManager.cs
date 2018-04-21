@@ -10,17 +10,21 @@ public class PuzzleTwoManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failureSound;
-    [SerializeField] private float puzzleSolvedMusicDelay;
+    [SerializeField] private float successSoundDelay;
+    [SerializeField] private float musicDelay;
 
     private bool playedSuccessSound;
     private bool allShellsCorrect;
     private int shellCount;
+
+    private PlayerController player;
 
     private void Awake()
     {
         musicManager = FindObjectOfType<MusicManager>();
         audioSource = GetComponent<AudioSource>();
         puzzleButton = FindObjectOfType<PuzzleButtonTwo>();
+        player = FindObjectOfType<PlayerController>();
         allShellsCorrect = true;
     }
 
@@ -53,12 +57,6 @@ public class PuzzleTwoManager : MonoBehaviour
 
     private void PuzzleSolved()
     {
-        if (!playedSuccessSound)
-        {
-            audioSource.PlayOneShot(successSound);
-            playedSuccessSound = true;
-        }
-
         ShellPuzzleTwo[] shells = FindObjectsOfType<ShellPuzzleTwo>();
 
         foreach (ShellPuzzleTwo shell in shells)
@@ -66,20 +64,42 @@ public class PuzzleTwoManager : MonoBehaviour
             shell.PuzzleSolved();
         }
 
+        player.canMove = false;
+        musicManager.StopAllMusic();
         puzzleButton.isPuzzleSolved = true;
-        StartCoroutine(PuzzleTwoSolvedCo());
+        puzzleButton.PlayPuzzleSoundsSolved();
+        StartCoroutine(PuzzleTwoSuccessCo());
     }
 
-    private IEnumerator PuzzleTwoSolvedCo()
+    private IEnumerator PuzzleTwoSuccessCo()
     {
-        yield return new WaitForSeconds(puzzleSolvedMusicDelay);
-        PuzzleTwoSolved();
+        yield return new WaitForSeconds(successSoundDelay);
+        PuzzleTwoSuccessSound();
     }
 
-    private void PuzzleTwoSolved()
+    private void PuzzleTwoSuccessSound()
+    {
+        if (!playedSuccessSound)
+        {
+            audioSource.PlayOneShot(successSound);
+            playedSuccessSound = true;
+        }
+
+        StartCoroutine(PuzzleTwoMusicCo());
+    }
+
+    private IEnumerator PuzzleTwoMusicCo()
+    {
+        yield return new WaitForSeconds(musicDelay);
+        PlayMusic();
+    }
+
+    private void PlayMusic()
     {
         musicManager.isLevelOneSolved = true;
         musicManager.CheckWhichMusicToPlay();
+        player.canMove = true;
+
         this.gameObject.SetActive(false);
     }
 

@@ -8,7 +8,7 @@ public class PuzzleButtonThree : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip[] puzzleSounds;
 
-    [SerializeField] private float[] delay;
+    [SerializeField] private float delay;
     [SerializeField] private float shufflePiecesDelay;
 
     public bool isPlayingSounds;
@@ -46,7 +46,7 @@ public class PuzzleButtonThree : MonoBehaviour
 
     private IEnumerator PuzzleSoundOneCo()
     {
-        yield return new WaitForSeconds(delay[0]);
+        yield return new WaitForSeconds(delay);
         PlaySoundOne();
     }
 
@@ -58,7 +58,7 @@ public class PuzzleButtonThree : MonoBehaviour
 
     private IEnumerator PuzzleSoundTwoCo()
     {
-        yield return new WaitForSeconds(delay[1]);
+        yield return new WaitForSeconds(delay);
         PlaySoundTwo();
     }
 
@@ -70,7 +70,7 @@ public class PuzzleButtonThree : MonoBehaviour
 
     private IEnumerator PuzzleSoundThreeCo()
     {
-        yield return new WaitForSeconds(delay[2]);
+        yield return new WaitForSeconds(delay);
         PlaySoundThree();
     }
 
@@ -82,7 +82,7 @@ public class PuzzleButtonThree : MonoBehaviour
 
     private IEnumerator PuzzleSoundFourCo()
     {
-        yield return new WaitForSeconds(delay[3]);
+        yield return new WaitForSeconds(delay);
         PlaySoundFour();
     }
 
@@ -94,7 +94,7 @@ public class PuzzleButtonThree : MonoBehaviour
 
     private IEnumerator PuzzleSoundFiveCo()
     {
-        yield return new WaitForSeconds(delay[4]);
+        yield return new WaitForSeconds(delay);
         PlaySoundFive();
     }
 
@@ -106,11 +106,6 @@ public class PuzzleButtonThree : MonoBehaviour
         if (!isPuzzleSolved)
         {
             StartCoroutine(ShufflePiecesCo());
-        }
-        else
-        {
-            PlayerController player = FindObjectOfType<PlayerController>();
-            player.canMove = true;
         }
     }
 

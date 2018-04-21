@@ -3496,7 +3496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   successSound: {fileID: 8300000, guid: 63260a6fe90b413448aebe1eebc3dd89, type: 3}
   failureSound: {fileID: 8300000, guid: b61f0bcd892ff2645af390eadf09dff0, type: 3}
-  puzzleSolvedMusicDelay: 1.5
+  successSoundDelay: 3.75
+  musicDelay: 1.5
   grid:
   - {fileID: 0}
   - {fileID: 0}
@@ -5168,12 +5169,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e3d30fa61fb6570419fb340d38a2e7a3, type: 3}
   - {fileID: 8300000, guid: 072fe1b348cb38b4a8aa7ad2ec69d4fd, type: 3}
   - {fileID: 8300000, guid: b1ed91f8cf637504f9dbd4917fea8130, type: 3}
-  delay:
-  - 0.75
-  - 0.75
-  - 0.75
-  - 0.75
-  - 0.75
+  delay: 0.6
   isPlayingSounds: 0
   isPuzzleSolved: 0
   wasButtonActivated: 0

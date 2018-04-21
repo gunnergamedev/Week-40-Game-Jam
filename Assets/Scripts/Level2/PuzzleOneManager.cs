@@ -9,7 +9,8 @@ public class PuzzleOneManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failureSound;
-    [SerializeField] private float puzzleSolvedMusicDelay;
+    [SerializeField] private float successSoundDelay;
+    [SerializeField] private float musicDelay;
 
     [SerializeField] private GameObject[] grid;
     [SerializeField] private Vector3[] gridpointPosition;
@@ -111,7 +112,33 @@ public class PuzzleOneManager : MonoBehaviour
         }
     }
 
+    public void PuzzleAlreadySolved()
+    {
+        isPuzzleAlreadySolved = true;
+        puzzleButton.isPuzzleSolved = true;
+
+        foreach (Clamshell shell in clamshells)
+        {
+            shell.PuzzleAlreadySolved();
+        }
+    }
+
     private void PuzzleSolved()
+    {
+        player.canMove = false;
+        musicManager.StopAllMusic();
+        puzzleButton.isPuzzleSolved = true;
+        puzzleButton.PlayPuzzleSoundsSolved();
+        StartCoroutine(PuzzleOneSolvedCo());
+    }
+
+    private IEnumerator PuzzleOneSolvedCo()
+    {
+        yield return new WaitForSeconds(successSoundDelay);
+        PuzzleOneSuccessSound();
+    }
+
+    private void PuzzleOneSuccessSound()
     {
         if (!playedSuccessSound)
         {
@@ -119,20 +146,21 @@ public class PuzzleOneManager : MonoBehaviour
             playedSuccessSound = true;
         }
 
-        StartCoroutine(PuzzleOneSolvedCo());
+        StartCoroutine(PuzzleOneMusicCo());
     }
 
-    private IEnumerator PuzzleOneSolvedCo()
+    private IEnumerator PuzzleOneMusicCo()
     {
-        yield return new WaitForSeconds(puzzleSolvedMusicDelay);
-        PuzzleOneSolved();
+        yield return new WaitForSeconds(musicDelay);
+        PlayMusic();
     }
 
-    private void PuzzleOneSolved()
+    private void PlayMusic()
     {
         musicManager.isLevelTwoSolved = true;
         musicManager.CheckWhichMusicToPlay();
-        puzzleButton.isPuzzleSolved = true;        
+        player.canMove = true;
+
         this.gameObject.SetActive(false);
     }
 
@@ -200,17 +228,6 @@ public class PuzzleOneManager : MonoBehaviour
                     pearl.pearlNumber = 2;
                     break;
             }
-        }
-    }
-
-    public void PuzzleAlreadySolved()
-    {
-        isPuzzleAlreadySolved = true;
-        puzzleButton.isPuzzleSolved = true;
-
-        foreach (Clamshell shell in clamshells)
-        {
-            shell.PuzzleAlreadySolved();
         }
     }
 }

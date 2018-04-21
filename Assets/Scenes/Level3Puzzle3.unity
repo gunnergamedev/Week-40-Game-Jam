@@ -3327,12 +3327,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 35297907f32deda40839aeb206a952f7, type: 3}
   - {fileID: 8300000, guid: df49ac893c8180045bd74d1240598392, type: 3}
   - {fileID: 8300000, guid: 56ce00d7304c3ef409b094e31d4d216e, type: 3}
-  delay:
-  - 0.45
-  - 0.45
-  - 0.45
-  - 0.45
-  - 0.45
+  delay: 0.35
   shufflePiecesDelay: 1
   isPlayingSounds: 0
   isPuzzleSolved: 0
@@ -6185,9 +6180,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c8a51d1fb597d9468a75abaf71547c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  successSound: {fileID: 0}
-  failureSound: {fileID: 0}
-  puzzleSolvedMusicDelay: 0
+  successSound: {fileID: 8300000, guid: 63260a6fe90b413448aebe1eebc3dd89, type: 3}
+  failureSound: {fileID: 8300000, guid: b61f0bcd892ff2645af390eadf09dff0, type: 3}
+  successSoundDelay: 2.75
+  musicDelay: 1.5
 --- !u!4 &1991336887
 Transform:
   m_ObjectHideFlags: 0

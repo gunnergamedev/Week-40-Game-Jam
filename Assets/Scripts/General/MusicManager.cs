@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MusicManager : MonoBehaviour
 {
+    [SerializeField] private float fadeTime;
+
     [SerializeField] private AudioSource audioOne;
     [SerializeField] private AudioSource audioTwo;
     [SerializeField] private AudioSource audioThree;
@@ -84,13 +86,20 @@ public class MusicManager : MonoBehaviour
         audioFull.Play();
     }
 
-    private void StopAllMusic()
+    public void StopAllMusic()
     {
+        StartCoroutine(FadeOut(audioOne,fadeTime));
+        StartCoroutine(FadeOut(audioTwo, fadeTime));
+        StartCoroutine(FadeOut(audioThree, fadeTime));
+        StartCoroutine(FadeOut(audioFull, fadeTime));
+        StartCoroutine(FadeOut(audioMenu, fadeTime));
+
+        /*
         audioOne.Stop();
         audioTwo.Stop();
         audioThree.Stop();
         audioFull.Stop();
-        audioMenu.Stop();
+        audioMenu.Stop(); */
     }
 
     public void StopMainMenuMusic()
@@ -101,5 +110,20 @@ public class MusicManager : MonoBehaviour
     private void PlayMainMenuMusic()
     {
         audioMenu.Play();
+    }
+
+    public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
     }
 }

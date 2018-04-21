@@ -553,6 +553,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3a80627b5190cf4d9d86ef983e1985c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeTime: 0.7
   audioOne: {fileID: 1224375480}
   audioTwo: {fileID: 1224375479}
   audioThree: {fileID: 1224375478}
@@ -563,7 +564,7 @@ MonoBehaviour:
   isLevelThreeSolved: 0
   areAllLevelsSolved: 0
   playMainMenuMusic: 0
-  musicDelay: 0.3
+  musicDelay: 0.7
 --- !u!4 &1224375482
 Transform:
   m_ObjectHideFlags: 0

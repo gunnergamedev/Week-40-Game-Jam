@@ -9,49 +9,27 @@ public class PuzzleThreeManager : MonoBehaviour
 
     [SerializeField] private AudioClip successSound;
     [SerializeField] private AudioClip failureSound;
-    [SerializeField] private float puzzleSolvedMusicDelay;
+    [SerializeField] private float successSoundDelay;
+    [SerializeField] private float musicDelay;
 
     private bool playedSuccessSound;
 
     private Piece[] pieces;
     private int correctPieceCount;
 
+    private PlayerController player;
+
     private void Awake()
     {
         pieces = FindObjectsOfType<Piece>();
         puzzleButton = FindObjectOfType<PuzzleButtonThree>();
+        player = FindObjectOfType<PlayerController>();
     }
 
     private void Start()
     {
         musicManager = FindObjectOfType<MusicManager>();
         audioSource = GetComponent<AudioSource>();        
-    }
-
-    private void PuzzleSolved()
-    {
-        if (!playedSuccessSound)
-        {
-            audioSource.PlayOneShot(successSound);
-            playedSuccessSound = true;
-        }
-
-        puzzleButton.isPuzzleSolved = true;
-        StartCoroutine(PuzzleThreeSolvedCo());
-    }
-
-    private IEnumerator PuzzleThreeSolvedCo()
-    {
-        yield return new WaitForSeconds(puzzleSolvedMusicDelay);
-        PuzzleThreeSolved();
-    }
-
-    private void PuzzleThreeSolved()
-    {
-        musicManager.isLevelThreeSolved = true;
-        musicManager.CheckWhichMusicToPlay();
-        puzzleButton.PlayPuzzleSoundsSolved();
-        this.gameObject.SetActive(false);
     }
 
     public void CheckIfAllPiecesCorrect()
@@ -75,6 +53,46 @@ public class PuzzleThreeManager : MonoBehaviour
                 piece.isPuzzleSolved = true;
             }
         }
+    }
+
+    private void PuzzleSolved()
+    {
+        musicManager.StopAllMusic();
+        puzzleButton.isPuzzleSolved = true;
+        puzzleButton.PlayPuzzleSoundsSolved();
+        StartCoroutine(PuzzleThreeSuccessCo());
+    }
+
+    private IEnumerator PuzzleThreeSuccessCo()
+    {
+        yield return new WaitForSeconds(successSoundDelay);
+        PuzzleThreeSuccessSound();
+    }
+
+    private void PuzzleThreeSuccessSound()
+    {
+        if (!playedSuccessSound)
+        {
+            audioSource.PlayOneShot(successSound);
+            playedSuccessSound = true;
+        }
+
+        StartCoroutine(PuzzleThreeMusicCo());
+    }
+
+    private IEnumerator PuzzleThreeMusicCo()
+    {
+        yield return new WaitForSeconds(musicDelay);
+        PlayMusic();
+    }
+
+    private void PlayMusic()
+    {
+        musicManager.isLevelThreeSolved = true;
+        musicManager.CheckWhichMusicToPlay();
+        player.canMove = true;
+
+        this.gameObject.SetActive(false);
     }
 
     public void PuzzleAlreadySolved()
