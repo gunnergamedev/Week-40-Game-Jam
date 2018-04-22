@@ -21,8 +21,6 @@ public class PuzzleOneManager : MonoBehaviour
 
     private Clamshell[] clamshells;
 
-    public int pearlCount = 0;
-
     private bool playedSuccessSound;
     public bool isPuzzleAlreadySolved;
 
@@ -87,7 +85,7 @@ public class PuzzleOneManager : MonoBehaviour
 
     private IEnumerator CheckAllPearlsCo()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.25f);
         CheckIfAllPearlsAreCorrect();
     }
 
@@ -110,6 +108,8 @@ public class PuzzleOneManager : MonoBehaviour
         {
             PuzzleFailed();
         }
+
+        correctPearls = 0;
     }
 
     public void PuzzleAlreadySolved()
@@ -136,7 +136,6 @@ public class PuzzleOneManager : MonoBehaviour
         player.canMove = false;
         musicManager.StopAllMusic();
         puzzleButton.isPuzzleSolved = true;
-        puzzleButton.PlayPuzzleSoundsSolved();
 
         InteractZone[] zones = FindObjectsOfType<InteractZone>();
 
@@ -184,7 +183,6 @@ public class PuzzleOneManager : MonoBehaviour
     private void PuzzleFailed()
     {
         audioSource.PlayOneShot(failureSound);
-        pearlCount = 0;
 
         DestroyPearls();
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PuzzleButtonOne : MonoBehaviour
 {
+    private PuzzleOneManager puzzleManager;
     private Animator animator;
     private AudioSource audioSource;
     [SerializeField] private AudioClip[] puzzleSounds;
@@ -14,10 +15,124 @@ public class PuzzleButtonOne : MonoBehaviour
     public bool isPuzzleSolved;
     public bool wasButtonActivated;
 
+    [SerializeField] private int[] pearlNumbers;
+    private int pearlSoundCount;
+
+    private Clamshell[] shells;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        puzzleManager = FindObjectOfType<PuzzleOneManager>();
+
+        pearlSoundCount = 0;
+
+        shells = FindObjectsOfType<Clamshell>();
+    }
+
+    public void AddPearlSoundToPlay(int pearlNumber, int shellNumber)
+    {
+        pearlNumbers[shellNumber] = pearlNumber;
+        pearlSoundCount++;
+
+        if (pearlSoundCount == 5)
+        {
+            PlayPearlSounds();
+        }
+    }
+
+    public void PlayPearlSounds()
+    {
+        if (!isPlayingSounds)
+        {
+            StartCoroutine(PlayPearlSoundOneCo());
+            isPlayingSounds = true;
+        }
+    }
+
+    private IEnumerator PlayPearlSoundOneCo()
+    {
+        yield return new WaitForSeconds(delay);
+        PlayPearlSoundOne();
+    }
+
+    private void PlayPearlSoundOne()
+    {
+        CheckShell(0);
+        int i = pearlNumbers[0];
+        audioSource.PlayOneShot(puzzleSounds[i]);
+        StartCoroutine(PearlSoundTwoCo());
+    }
+
+    private IEnumerator PearlSoundTwoCo()
+    {
+        yield return new WaitForSeconds(delay);
+        PlayPearlSoundTwo();
+    }
+
+    private void PlayPearlSoundTwo()
+    {
+        CheckShell(1);
+        int i = pearlNumbers[1];
+        audioSource.PlayOneShot(puzzleSounds[i]);
+        StartCoroutine(PearlSoundThreeCo());
+    }
+
+    private IEnumerator PearlSoundThreeCo()
+    {
+        yield return new WaitForSeconds(delay);
+        PlayPearlSoundThree();
+    }
+
+    private void PlayPearlSoundThree()
+    {
+        CheckShell(2);
+        int i = pearlNumbers[2];
+        audioSource.PlayOneShot(puzzleSounds[i]);
+        StartCoroutine(PearlSoundFourCo());
+    }
+
+    private IEnumerator PearlSoundFourCo()
+    {
+        yield return new WaitForSeconds(delay);
+        PlayPearlSoundFour();
+    }
+
+    private void PlayPearlSoundFour()
+    {
+        CheckShell(3);
+        int i = pearlNumbers[3];
+        audioSource.PlayOneShot(puzzleSounds[i]);
+        StartCoroutine(PearlSoundFiveCo());
+    }
+
+    private IEnumerator PearlSoundFiveCo()
+    {
+        yield return new WaitForSeconds(delay);
+        PlayPearlSoundFive();
+    }
+
+    private void PlayPearlSoundFive()
+    {
+        CheckShell(4);
+        int i = pearlNumbers[4];
+        audioSource.PlayOneShot(puzzleSounds[i]);
+        isPlayingSounds = false;
+
+        puzzleManager.CheckClamshellsForPearls();
+        pearlSoundCount = 0;
+    }
+
+    private void CheckShell(int shellNumber)
+    {
+        foreach(Clamshell shell in shells)
+        {
+            if (shell.puzzleNumber == shellNumber)
+            {
+
+            }
+        }
     }
 
     public void PlayPuzzleSounds()
@@ -26,15 +141,6 @@ public class PuzzleButtonOne : MonoBehaviour
         {
             wasButtonActivated = true;
             animator.SetBool("wasButtonActivated", wasButtonActivated);
-            StartCoroutine(PuzzleSoundOneCo());
-            isPlayingSounds = true;
-        }
-    }
-
-    public void PlayPuzzleSoundsSolved()
-    {
-        if (!isPlayingSounds)
-        {
             StartCoroutine(PuzzleSoundOneCo());
             isPlayingSounds = true;
         }

@@ -5,10 +5,9 @@ using UnityEngine;
 public class Clamshell : MonoBehaviour
 {
     private Animator animator;
-    private PuzzleOneManager puzzleManager;
     private SpriteRenderer spriteRenderer;
 
-    [SerializeField] private int puzzleNumber;
+    public int puzzleNumber;
     public bool correctPearl;
 
     [SerializeField] private Sprite pearlShellSprite;
@@ -18,7 +17,6 @@ public class Clamshell : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        puzzleManager = FindObjectOfType<PuzzleOneManager>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         spriteRenderer.sprite = noPearlSprite;
@@ -47,13 +45,6 @@ public class Clamshell : MonoBehaviour
     {
         spriteRenderer.sprite = pearlShellSprite;
         animator.SetBool("hasPearl", true);
-
-        puzzleManager.pearlCount++;
-
-        if (puzzleManager.pearlCount == 5)
-        {
-            puzzleManager.CheckClamshellsForPearls();
-        }
     }
 
     public void ResetShell()
@@ -62,6 +53,9 @@ public class Clamshell : MonoBehaviour
         animator.SetBool("hasPearl", false);
 
         correctPearl = false;
+        animator.SetBool("correctPearl", false);
+
+        animator.SetBool("resetShell", true);
     }
 
     public void PuzzleAlreadySolved()

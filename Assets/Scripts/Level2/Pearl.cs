@@ -64,6 +64,11 @@ public class Pearl : MonoBehaviour
         }
         else if (other.tag == "Clamshell")
         {
+            Clamshell shell = other.GetComponent<Clamshell>();
+            int shellNumber = shell.puzzleNumber;
+
+            PuzzleButtonOne puzzleButton = FindObjectOfType<PuzzleButtonOne>();
+            puzzleButton.AddPearlSoundToPlay(pearlNumber, shellNumber);
             DeactivatePearl();
         }
     }

@@ -3605,7 +3605,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   successSound: {fileID: 8300000, guid: 63260a6fe90b413448aebe1eebc3dd89, type: 3}
   failureSound: {fileID: 8300000, guid: b61f0bcd892ff2645af390eadf09dff0, type: 3}
-  successSoundDelay: 3.75
+  successSoundDelay: 0.75
   musicDelay: 1.5
   grid:
   - {fileID: 0}
@@ -3641,7 +3641,6 @@ MonoBehaviour:
   - {x: 2.58, y: 3.23, z: 0}
   gridpointPrefab: {fileID: 1480999500098560, guid: 7f3d085903358d941bea03e7c9c90316,
     type: 2}
-  pearlCount: 0
   isPuzzleAlreadySolved: 0
   delayAfterFailure: 1.25
   pearlToCreate: {fileID: 1602648439451984, guid: 7fee16148103ad34ab5ab1dae93159f1,
@@ -5282,6 +5281,7 @@ MonoBehaviour:
   isPlayingSounds: 0
   isPuzzleSolved: 0
   wasButtonActivated: 0
+  pearlNumbers: 0000000000000000000000000000000000000000
 --- !u!82 &2018170950
 AudioSource:
   m_ObjectHideFlags: 0
