@@ -7,6 +7,7 @@ public class ShellPuzzleTwo : MonoBehaviour
     private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
     private PuzzleTwoManager puzzleManager;
+    private PuzzleButtonTwo puzzleButton;
 
     [SerializeField] private AudioClip[] puzzleSounds;
 
@@ -28,6 +29,7 @@ public class ShellPuzzleTwo : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         puzzleManager = FindObjectOfType<PuzzleTwoManager>();
+        puzzleButton = FindObjectOfType<PuzzleButtonTwo>();
         buttonRenderer = button.GetComponent<SpriteRenderer>();
     }
 
@@ -48,6 +50,7 @@ public class ShellPuzzleTwo : MonoBehaviour
             wasActivated = true;
             spriteRenderer.sprite = activatedShell;
             puzzleManager.CheckCurrentShell(shellNumber);
+            puzzleButton.AddShellSoundToPlay(shellNumber);
         }
     }
 

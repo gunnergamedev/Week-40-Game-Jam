@@ -133,7 +133,6 @@ public class PuzzleOneManager : MonoBehaviour
 
     private void PuzzleSolved()
     {
-        player.canMove = false;
         musicManager.StopAllMusic();
         puzzleButton.isPuzzleSolved = true;
 
@@ -175,7 +174,7 @@ public class PuzzleOneManager : MonoBehaviour
     {
         musicManager.isLevelTwoSolved = true;
         musicManager.CheckWhichMusicToPlay();
-        player.canMove = true;
+        player.EnablePlayerMovement();
 
         this.gameObject.SetActive(false);
     }

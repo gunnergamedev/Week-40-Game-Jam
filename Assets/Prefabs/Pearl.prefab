@@ -40,7 +40,6 @@ GameObject:
   - component: {fileID: 114243004912300364}
   - component: {fileID: 58788911142738382}
   - component: {fileID: 82917738313995608}
-  - component: {fileID: 114857277709841852}
   - component: {fileID: 95201840492031180}
   m_Layer: 8
   m_Name: Pearl
@@ -258,17 +257,6 @@ MonoBehaviour:
   hasBeenPushed: 0
   buttonToCreate: {fileID: 1055036723090414, guid: 1ccb0098745eae74eb961782129f9746,
     type: 2}
---- !u!114 &114857277709841852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1602648439451984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5402372127e6e1c4aa497e072da89f43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &212650743385428550
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -302,7 +290,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: e40da46000f38424dba78ab789b19930, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

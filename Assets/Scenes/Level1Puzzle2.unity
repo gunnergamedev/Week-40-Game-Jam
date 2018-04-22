@@ -3732,7 +3732,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   successSound: {fileID: 8300000, guid: 63260a6fe90b413448aebe1eebc3dd89, type: 3}
   failureSound: {fileID: 8300000, guid: b61f0bcd892ff2645af390eadf09dff0, type: 3}
-  successSoundDelay: 3.75
+  successSoundDelay: 0.75
   musicDelay: 1.5
 --- !u!4 &1098710015
 Transform:
@@ -5021,10 +5021,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 14707d070a9916c4baa1f8cdc6c22d71, type: 3}
   - {fileID: 8300000, guid: 48607e3a628c39d418a80aa1d632900b, type: 3}
   - {fileID: 8300000, guid: 2f37bc8ce63e3ba43890bcd0e387081b, type: 3}
+  - {fileID: 8300000, guid: 52f12c8d595cf2743ba3a0c989156d1d, type: 3}
+  - {fileID: 8300000, guid: fe4b799bd138fe747b875aa1554bb2f9, type: 3}
+  - {fileID: 8300000, guid: 6dd5a860befc34f4f937a3ba05d39374, type: 3}
   delay: 0.6
   isPlayingSounds: 0
   isPuzzleSolved: 0
   wasButtonActivated: 0
+  soundsToPlay: 0000000000000000000000000000000000000000000000000000000000000000
 --- !u!82 &2018170950
 AudioSource:
   m_ObjectHideFlags: 0

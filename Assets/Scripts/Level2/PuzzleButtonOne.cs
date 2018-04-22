@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PuzzleButtonOne : MonoBehaviour
 {
+    private PlayerController player;
     private PuzzleOneManager puzzleManager;
     private Animator animator;
     private AudioSource audioSource;
@@ -22,6 +23,7 @@ public class PuzzleButtonOne : MonoBehaviour
 
     private void Awake()
     {
+        player = FindObjectOfType<PlayerController>();
         animator = GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
         puzzleManager = FindObjectOfType<PuzzleOneManager>();
@@ -54,6 +56,7 @@ public class PuzzleButtonOne : MonoBehaviour
     private IEnumerator PlayPearlSoundOneCo()
     {
         yield return new WaitForSeconds(delay);
+        player.canMove = false;
         PlayPearlSoundOne();
     }
 

@@ -36,11 +36,6 @@ public class PuzzleTwoManager : MonoBehaviour
         }
 
         shellCount++;
-
-        if (shellCount == 5)
-        {
-            CheckIfAllShellsCorrect();
-        }
     }
 
     public void CheckIfAllShellsCorrect()
@@ -64,10 +59,8 @@ public class PuzzleTwoManager : MonoBehaviour
             shell.PuzzleSolved();
         }
 
-        player.canMove = false;
         musicManager.StopAllMusic();
         puzzleButton.isPuzzleSolved = true;
-        puzzleButton.PlayPuzzleSoundsSolved();
         StartCoroutine(PuzzleTwoSuccessCo());
     }
 
@@ -98,7 +91,7 @@ public class PuzzleTwoManager : MonoBehaviour
     {
         musicManager.isLevelOneSolved = true;
         musicManager.CheckWhichMusicToPlay();
-        player.canMove = true;
+        player.EnablePlayerMovement();
 
         this.gameObject.SetActive(false);
     }
@@ -115,6 +108,8 @@ public class PuzzleTwoManager : MonoBehaviour
         {
             shell.DeactivateShell();
         }
+
+        player.EnablePlayerMovement();
     }
 
     public void PuzzleAlreadySolved()
