@@ -244,5 +244,10 @@ public class PuzzleOneManager : MonoBehaviour
                     break;
             }
         }
+
+        foreach (Clamshell shell in clamshells)
+        {
+            shell.ResetAnim();
+        }
     }
 }

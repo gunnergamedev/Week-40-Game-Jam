@@ -41,6 +41,12 @@ public class Clamshell : MonoBehaviour
         }
     }
 
+    public void CheckShellCorrectAnim()
+    {
+        animator.SetBool("correctPearl", correctPearl);
+        animator.SetBool("checkingPearls", true);
+    }
+
     public void PearlInShell()
     {
         spriteRenderer.sprite = pearlShellSprite;
@@ -56,6 +62,12 @@ public class Clamshell : MonoBehaviour
         animator.SetBool("correctPearl", false);
 
         animator.SetBool("resetShell", true);
+        animator.SetBool("checkingPearls", false);
+    }
+
+    public void ResetAnim()
+    {
+        animator.SetBool("resetShell", false);
     }
 
     public void PuzzleAlreadySolved()

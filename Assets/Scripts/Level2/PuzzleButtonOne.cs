@@ -119,9 +119,15 @@ public class PuzzleButtonOne : MonoBehaviour
         int i = pearlNumbers[4];
         audioSource.PlayOneShot(puzzleSounds[i]);
         isPlayingSounds = false;
-
-        puzzleManager.CheckClamshellsForPearls();
         pearlSoundCount = 0;
+
+        StartCoroutine(CheckPuzzleSolved());
+    }
+
+    private IEnumerator CheckPuzzleSolved()
+    {
+        yield return new WaitForSeconds(0.25f);
+        puzzleManager.CheckClamshellsForPearls();
     }
 
     private void CheckShell(int shellNumber)
@@ -130,7 +136,7 @@ public class PuzzleButtonOne : MonoBehaviour
         {
             if (shell.puzzleNumber == shellNumber)
             {
-
+                shell.CheckShellCorrectAnim();
             }
         }
     }
