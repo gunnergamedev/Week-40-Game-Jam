@@ -194,9 +194,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mountainExitPositions:
-  - {x: -17.29, y: 2.18, z: 0}
-  - {x: 5.54, y: 2.18, z: 0}
-  - {x: 27.73, y: 2.18, z: 0}
+  - {x: -17.2, y: -7.9, z: 0}
+  - {x: 2.05, y: 5.6, z: 0}
+  - {x: 24.97, y: -0.6, z: 0}
   gridpointToSpawn: {fileID: 1480999500098560, guid: 7f3d085903358d941bea03e7c9c90316,
     type: 2}
   playerExitingMountain: 0
