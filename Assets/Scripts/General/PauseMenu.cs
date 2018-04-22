@@ -9,6 +9,13 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject dialogueBox;
 
+    private PlayerController playerController;
+
+    private void Awake()
+    {
+        playerController = FindObjectOfType<PlayerController>();
+    }
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -35,6 +42,7 @@ public class PauseMenu : MonoBehaviour
     {
         gameIsPaused = false;
         Time.timeScale = 1.0f;
+        playerController.canMove = true; //for animations, sounds
         HidePauseMenu();
     }
 
@@ -42,6 +50,7 @@ public class PauseMenu : MonoBehaviour
     {
         gameIsPaused = true;
         Time.timeScale = 0.0f;
+        playerController.canMove = false; //for animations, sounds
         ShowPauseMenu();
     }
 

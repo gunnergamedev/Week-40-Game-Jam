@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private CollisionChecker collisionChecker;
     private GameManager gameManager;
     private Animator animator;
+    private PlayerSoundManager playerSoundManager;
     
     [SerializeField] private float moveSpeed = 4f;
     public Vector3 directionalInput;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
         collisionChecker = GetComponent<CollisionChecker>();
         gameManager = FindObjectOfType<GameManager>();
         animator = GetComponent<Animator>();
+        playerSoundManager = GetComponent<PlayerSoundManager>();
         canMove = true;
         defaultXScale = transform.localScale.x;
     }
@@ -132,6 +134,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             velocity = Vector3.zero;
+            playerSoundManager.isMoving = false;
         }
     }
 
@@ -140,6 +143,19 @@ public class PlayerController : MonoBehaviour
         if (canMove)
         {
             collisionChecker.CheckCollisionsAndMove(velocity * Time.deltaTime);
+
+            if (Mathf.Abs(velocity.x) < 0.7f && Mathf.Abs(velocity.y) < 0.7f)
+            {
+                playerSoundManager.isMoving = false;
+            }
+            else
+            {
+                playerSoundManager.isMoving = true;
+            }
+        }
+        else
+        {
+            playerSoundManager.isMoving = false;
         }
     }
 
@@ -260,6 +276,11 @@ public class PlayerController : MonoBehaviour
             MountainExit mountain = other.GetComponent<MountainExit>();
             mountain.ExitMountain();
         }
+
+        if (other.tag == "GrassZone")
+        {
+            playerSoundManager.surface = PlayerSoundManager.Surface.grass;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -278,6 +299,11 @@ public class PlayerController : MonoBehaviour
             {
                 zone.InactiveButtonSprite();
             }
+        }
+
+        if (other.tag == "GrassZone")
+        {
+            playerSoundManager.surface = PlayerSoundManager.Surface.sand;
         }
     }
 

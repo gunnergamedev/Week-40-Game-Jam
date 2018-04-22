@@ -11,9 +11,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gridpointToSpawn;
 
     private PlayerController player;
+    private PlayerSoundManager playerSoundManager;
     public bool playerExitingMountain;
 
     public int currentMountainNumber;
+
+    public bool soundsUnlocked;
 
     private void Awake()
     {
@@ -29,6 +32,19 @@ public class GameManager : MonoBehaviour
     private void OnDisable()
     {
         SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    public void UnlockSounds()
+    {
+        soundsUnlocked = true;
+
+        SoundManagerBirds birds = FindObjectOfType<SoundManagerBirds>();
+        birds.UnlockSounds();
+
+        playerSoundManager.UnlockSounds();
+
+        OceanSoundManager ocean = FindObjectOfType<OceanSoundManager>();
+        ocean.UnlockSounds();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -66,6 +82,10 @@ public class GameManager : MonoBehaviour
                     PuzzleTwoManager puzzleTwoManager = FindObjectOfType<PuzzleTwoManager>();
                     puzzleTwoManager.PuzzleAlreadySolved();
                 }
+
+                playerSoundManager = FindObjectOfType<PlayerSoundManager>();
+                playerSoundManager.surface = PlayerSoundManager.Surface.cave;
+
                 break;
 
             case "Level2Puzzle1":
@@ -74,6 +94,9 @@ public class GameManager : MonoBehaviour
                     PuzzleOneManager puzzleOneManager = FindObjectOfType<PuzzleOneManager>();
                     puzzleOneManager.PuzzleAlreadySolved();
                 }
+
+                playerSoundManager = FindObjectOfType<PlayerSoundManager>();
+                playerSoundManager.surface = PlayerSoundManager.Surface.cave;
                 break;
 
             case "Level3Puzzle3":
@@ -82,9 +105,20 @@ public class GameManager : MonoBehaviour
                     PuzzleThreeManager puzzleThreeManager = FindObjectOfType<PuzzleThreeManager>();
                     puzzleThreeManager.PuzzleAlreadySolved();
                 }
-                break;                
+
+                playerSoundManager = FindObjectOfType<PlayerSoundManager>();
+                playerSoundManager.surface = PlayerSoundManager.Surface.cave;
+                break;
+
+            case "Sandbox":
+                playerSoundManager = FindObjectOfType<PlayerSoundManager>();
+                playerSoundManager.surface = PlayerSoundManager.Surface.sand;
+
+                break;
 
             case "MainMenu":
+
+                soundsUnlocked = false;
 
                 musicManager.areAllLevelsSolved = false;
                 musicManager.isLevelOneSolved = false;

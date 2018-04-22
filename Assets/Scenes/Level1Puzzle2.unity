@@ -1601,6 +1601,16 @@ Prefab:
       value: 
       objectReference: {fileID: 21300012, guid: 56e34caa56b908343ba3d62c87e4875b,
         type: 3}
+    - target: {fileID: 61498942063682466, guid: d7542d3c050ba074eadbd41a455d9939,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 4.9453125
+      objectReference: {fileID: 0}
+    - target: {fileID: 61498942063682466, guid: d7542d3c050ba074eadbd41a455d9939,
+        type: 2}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 6.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d7542d3c050ba074eadbd41a455d9939, type: 2}
   m_IsPrefabParent: 0
@@ -1750,6 +1760,48 @@ MonoBehaviour:
   gameIsPaused: 0
   pauseMenu: {fileID: 272957030}
   dialogueBox: {fileID: 0}
+--- !u!1001 &450062187
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4669857726346910, guid: b4807b07ed5e8d649b8702c9d40703c2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.1279418
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669857726346910, guid: b4807b07ed5e8d649b8702c9d40703c2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.3114743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669857726346910, guid: b4807b07ed5e8d649b8702c9d40703c2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -1.3864098
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669857726346910, guid: b4807b07ed5e8d649b8702c9d40703c2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669857726346910, guid: b4807b07ed5e8d649b8702c9d40703c2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669857726346910, guid: b4807b07ed5e8d649b8702c9d40703c2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669857726346910, guid: b4807b07ed5e8d649b8702c9d40703c2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4669857726346910, guid: b4807b07ed5e8d649b8702c9d40703c2, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b4807b07ed5e8d649b8702c9d40703c2, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &515415844
 GameObject:
   m_ObjectHideFlags: 0
@@ -4979,7 +5031,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: 26d0257eb181e104689bcf31a279f0ef, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
