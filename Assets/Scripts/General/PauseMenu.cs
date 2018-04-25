@@ -18,7 +18,7 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Start"))
         {
             EscapeButtonPressed();
         }
@@ -26,15 +26,29 @@ public class PauseMenu : MonoBehaviour
 
     private void EscapeButtonPressed()
     {
-        switch (gameIsPaused)
-        {
-            case true:
-                ResumeGame();
-                break;
+        bool canPause = true;
 
-            case false:
-                PauseGame();
-                break;
+        GameObject dialogueBox = GameObject.Find("DialogueBox");
+        if (dialogueBox != null)
+        {
+            if (dialogueBox.activeInHierarchy == true)
+            {
+                canPause = false;
+            }
+        }
+
+        if (canPause)
+        {
+            switch (gameIsPaused)
+            {
+                case true:
+                    ResumeGame();
+                    break;
+
+                case false:
+                    PauseGame();
+                    break;
+            }
         }
     }
 
@@ -43,6 +57,19 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = false;
         Time.timeScale = 1.0f;
         playerController.canMove = true; //for animations, sounds
+
+        Scene scene = SceneManager.GetActiveScene();
+
+        if (scene.name == "Level3Puzzle3")
+        {
+            PuzzleButtonThree puzzleButton = FindObjectOfType<PuzzleButtonThree>();
+
+            if (puzzleButton.wasButtonActivated && !puzzleButton.isPuzzleSolved)
+            {
+                playerController.canMove = false;
+            }
+        }
+
         HidePauseMenu();
     }
 

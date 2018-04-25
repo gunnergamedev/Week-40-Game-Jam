@@ -6,6 +6,8 @@ using UnityEngine;
 public class SignPost : MonoBehaviour
 {
     private GameManager gameManager;
+    private PauseMenu pauseMenu;
+
     [SerializeField] private GameObject cursor;
 
     private bool soundsUnlocked;
@@ -14,6 +16,7 @@ public class SignPost : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         soundsUnlocked = gameManager.soundsUnlocked;
+        pauseMenu = FindObjectOfType<PauseMenu>();
 
         if (soundsUnlocked == false)
         {
@@ -25,14 +28,31 @@ public class SignPost : MonoBehaviour
         }
     }
 
-    public void Update()
+    /*
+    private void Update()
     {
         if (soundsUnlocked == false)
         {
             CheckMouseClick();
         }
+    } */
+
+    public void OnMouseDown()
+    {
+        if (soundsUnlocked == false && pauseMenu.gameIsPaused == false)
+        {
+            DialogueBoxRiddle box = FindObjectOfType<DialogueBoxRiddle>();
+            box.ActivateDialogueBox();
+
+            PlayerController player = FindObjectOfType<PlayerController>();
+            player.canMove = false;
+
+            cursor.SetActive(false);
+            this.gameObject.SetActive(false);
+        }
     }
 
+    /*
     private void CheckMouseClick()
     {
         if (Input.GetMouseButtonDown(0))
@@ -46,5 +66,5 @@ public class SignPost : MonoBehaviour
             cursor.SetActive(false);
             this.gameObject.SetActive(false);
         }
-    }
+    } */
 }

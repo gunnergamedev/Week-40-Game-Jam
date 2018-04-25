@@ -28,13 +28,13 @@ public class PuzzleButtonThree : MonoBehaviour
     {
         PauseMenu uiManager = FindObjectOfType<PauseMenu>();
         uiManager.ActivateDialogueBox();
+        wasButtonActivated = true;
     }
 
     public void PlayPuzzleSounds()
     {
         if (!isPlayingSounds && !isPuzzleSolved)
         {
-            wasButtonActivated = true;
             animator.SetBool("wasButtonActivated", wasButtonActivated);
             StartCoroutine(PuzzleSoundOneCo());
             isPlayingSounds = true;

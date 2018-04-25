@@ -7,7 +7,7 @@ public class WinScreen : MonoBehaviour
 {
     private void Update()
     {
-        bool start = (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Activate"));
+        bool start = (Input.GetKeyDown(KeyCode.KeypadEnter) || Input.GetButtonDown("Activate") || Input.GetButtonDown("Start"));
         bool exit = Input.GetKeyDown(KeyCode.Escape);
 
         if (start)
