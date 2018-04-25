@@ -600,7 +600,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameIsPaused: 0
   pauseMenu: {fileID: 861901731}
-  dialogueBox: {fileID: 0}
+  dialogueBox: {fileID: 1739895698}
 --- !u!114 &410883187
 MonoBehaviour:
   m_ObjectHideFlags: 0
