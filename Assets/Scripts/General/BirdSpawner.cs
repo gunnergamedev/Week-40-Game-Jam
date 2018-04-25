@@ -38,6 +38,7 @@ public class BirdSpawner : MonoBehaviour
             }
 
             Instantiate(birdToSpawn, spawnPos, Quaternion.identity);
+            lastSpawnPos = spawnPos;
         }
 
         StartCoroutine(SpawnBirdsCo());
