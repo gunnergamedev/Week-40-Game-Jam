@@ -26,10 +26,17 @@ public class BirdSpawner : MonoBehaviour
     private void SpawnBirds()
     {
         int birds = Random.Range(1, 4);
+        Vector3 lastSpawnPos = new Vector3(100f, 100f, 0f);
 
         for (int i = 0; i < birds; i++)
         {
             Vector3 spawnPos = new Vector3(Random.Range(minX, maxX), yPos, 0f);
+
+            while (Mathf.Abs(spawnPos.x - lastSpawnPos.x) <= 4f)
+            {
+                spawnPos = new Vector3(Random.Range(minX, maxX), yPos, 0f);
+            }
+
             Instantiate(birdToSpawn, spawnPos, Quaternion.identity);
         }
 
